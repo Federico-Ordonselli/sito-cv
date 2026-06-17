@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getContent, LANGS } from "../data/content.js";
+
+const NAV_HEIGHT = 60;
 
 function Navbar({ page, setPage, lang, setLang }) {
   const { nav } = getContent(lang).ui;
@@ -15,17 +17,32 @@ function Navbar({ page, setPage, lang, setLang }) {
     () => typeof window !== "undefined" && window.innerWidth <= 640
   );
   const [menuOpen, setMenuOpen] = useState(false);
+  const navRef = useRef(null);
 
   useEffect(() => {
-    const onResize = () => setIsMobile(window.innerWidth <= 640);
+    const onResize = () => {
+      const mobile = window.innerWidth <= 640;
+      setIsMobile(mobile);
+      if (!mobile) setMenuOpen(false); // close menu when switching to desktop
+    };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  // Close the mobile menu when switching to desktop
+  // Close the mobile menu on Escape or click/tap outside the navbar
   useEffect(() => {
-    if (!isMobile) setMenuOpen(false);
-  }, [isMobile]);
+    if (!menuOpen) return;
+    const onKey = (e) => { if (e.key === "Escape") setMenuOpen(false); };
+    const onPointer = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) setMenuOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointer);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointer);
+    };
+  }, [menuOpen]);
 
   const goTo = (id) => {
     setPage(id);
@@ -63,7 +80,7 @@ function Navbar({ page, setPage, lang, setLang }) {
   );
 
   return (
-    <nav style={{
+    <nav ref={navRef} style={{
       position: "sticky",
       top: 0,
       zIndex: 100,
@@ -74,7 +91,7 @@ function Navbar({ page, setPage, lang, setLang }) {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      height: 60,
+      height: NAV_HEIGHT,
     }}>
       <span
         onClick={() => goTo("home")}
@@ -161,7 +178,7 @@ function Navbar({ page, setPage, lang, setLang }) {
       {isMobile && menuOpen && (
         <div style={{
           position: "absolute",
-          top: 60,
+          top: NAV_HEIGHT,
           left: 0,
           right: 0,
           background: "#0d0d1af2",
