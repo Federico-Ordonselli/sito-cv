@@ -1,0 +1,5 @@
+/* Reset minimo: il portfolio fa affidamento solo sui propri stili inline + keyframes. */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+}
