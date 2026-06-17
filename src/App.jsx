@@ -2,6 +2,7 @@ import { useState } from "react";
 import Navbar from "./components/Navbar.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import ProjectsPage from "./pages/ProjectsPage.jsx";
+import CertificationsPage from "./pages/CertificationsPage.jsx";
 import HobbiesPage from "./pages/HobbiesPage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 
@@ -66,6 +67,7 @@ export default function App() {
       <main>
         {page === "home" && <HomePage setPage={setPage} />}
         {page === "projects" && <ProjectsPage />}
+        {page === "certifications" && <CertificationsPage />}
         {page === "hobbies" && <HobbiesPage />}
         {page === "about" && <AboutPage />}
       </main>

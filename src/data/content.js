@@ -4,9 +4,9 @@ export const DATA = {
   role: "Junior Data Analyst · Security · Builder",
   tagline: "Trasformo dati in decisioni. Costruisco cose, digitali e fisiche.",
   location: "Roma, Italia",
-  email: "federico@example.com",
-  github: "https://github.com/federico",
-  linkedin: "https://linkedin.com/in/federico",
+  email: "fede.ordons@gmail.com",
+  github: "https://github.com/Federico-Ordonselli",
+  linkedin: "https://www.linkedin.com/in/federico-ordonselli-aa7363226/",
 
   projects: {
     data: [
@@ -129,4 +129,104 @@ export const DATA = {
       { name: "PL-300 Power BI (in corso)", color: "#F7971E" },
     ],
   },
+
+  // ─── CERTIFICAZIONI ──────────────────────────────────────────────────────
+  // Ogni cert punta a un PDF in /public/certs. Date e link estratti dai PDF.
+  certifications: [
+    {
+      category: "Security",
+      color: "#FF6584",
+      items: [
+        {
+          name: "CompTIA Security+ (ce)",
+          file: "/certs/comptia-security-plus.pdf",
+          issuer: "CompTIA",
+          date: "Ott 2025",
+          credentialUrl: "https://www.comptia.org/certifications/verify",
+        },
+        {
+          name: "CompTIA CySA+ (ce)",
+          file: "/certs/comptia-cysa-plus.pdf",
+          issuer: "CompTIA",
+          date: "Gen 2026",
+          credentialUrl: "https://www.comptia.org/certifications/verify",
+        },
+      ],
+    },
+    {
+      category: "Data Analysis",
+      color: "#6C63FF",
+      items: [
+        {
+          name: "IBM Data Analyst Professional Certificate",
+          file: "/certs/ibm-data-analyst.pdf",
+          issuer: "IBM · Coursera",
+          date: "Ago 2025",
+          credentialUrl: "",
+        },
+        {
+          name: "Excel Basics for Data Analysis",
+          file: "/certs/excel-basics-data-analysis.pdf",
+          issuer: "IBM · Coursera",
+          date: "Mag 2025",
+          credentialUrl: "https://coursera.org/verify/6UAPG29YPR26",
+        },
+        {
+          name: "Data Visualization and Dashboards with Excel and Cognos",
+          file: "/certs/data-viz-excel-cognos.pdf",
+          issuer: "IBM · Coursera",
+          date: "Mag 2025",
+          credentialUrl: "https://coursera.org/verify/YS71E8P728UQ",
+        },
+        {
+          name: "Databases and SQL for Data Science with Python",
+          file: "/certs/databases-sql-data-science.pdf",
+          issuer: "IBM · Coursera",
+          date: "Mag 2025",
+          credentialUrl: "https://coursera.org/verify/7ST0S3L06XQZ",
+        },
+      ],
+    },
+    {
+      category: "Python & AI",
+      color: "#43B89C",
+      items: [
+        {
+          name: "Python for Data Science, AI & Development",
+          file: "/certs/python-data-science-ai-dev.pdf",
+          issuer: "IBM · Coursera",
+          date: "Mag 2025",
+          credentialUrl: "https://coursera.org/verify/1JD6Y1FYAD8B",
+        },
+        {
+          name: "Python Project for Data Science",
+          file: "/certs/python-project-data-science.pdf",
+          issuer: "IBM · Coursera",
+          date: "Mag 2025",
+          credentialUrl: "https://coursera.org/verify/6MJZ5Q3DK60T",
+        },
+        {
+          name: "Data Analysis with Python",
+          file: "/certs/data-analysis-with-python.pdf",
+          issuer: "IBM · Coursera",
+          date: "Giu 2025",
+          credentialUrl: "https://coursera.org/verify/C9YWMCVFPVWP",
+        },
+        {
+          name: "Data Visualization with Python",
+          file: "/certs/data-visualization-with-python.pdf",
+          issuer: "IBM · Coursera",
+          date: "Giu 2025",
+          credentialUrl: "https://coursera.org/verify/H6ERGSTJN9NT",
+        },
+        {
+          name: "Generative AI",
+          file: "/certs/generative-ai.pdf",
+          issuer: "IBM · Coursera",
+          date: "Ago 2025",
+          credentialUrl: "https://coursera.org/verify/EGNJALEI19Y5",
+        },
+      ],
+    },
+  ],
 };

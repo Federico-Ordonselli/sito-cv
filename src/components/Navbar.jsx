@@ -2,6 +2,7 @@ function Navbar({ page, setPage }) {
   const navItems = [
     { id: "home", label: "Home" },
     { id: "projects", label: "Progetti" },
+    { id: "certifications", label: "Certificazioni" },
     { id: "hobbies", label: "Hobby" },
     { id: "about", label: "Chi sono" },
   ];
@@ -32,7 +33,7 @@ function Navbar({ page, setPage }) {
           backgroundClip: "text",
         }}
       >
-        Federico.dev
+        ordonselli.info
       </span>
       <div style={{ display: "flex", gap: 4 }}>
         {navItems.filter(n => n.id !== "home").map((item) => (
