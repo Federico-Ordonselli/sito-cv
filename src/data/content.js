@@ -27,6 +27,7 @@ const RAW = {
   email: "fede.ordons@gmail.com",
   github: "https://github.com/Federico-Ordonselli",
   linkedin: "https://www.linkedin.com/in/federico-ordonselli-aa7363226/",
+  cv: tr("/cv/Ordonselli_CV_IT.pdf", "/cv/Ordonselli_CV_EN.pdf"),
 
   projects: {
     data: [
@@ -38,7 +39,7 @@ const RAW = {
         ),
         tags: ["Python", "Power BI", "DAX", "Pandas"],
         color: "#6C63FF",
-        link: "#",
+        link: "https://github.com/Federico-Ordonselli/ntsb-aviation-safety-analysis",
       },
       {
         title: "Customer Churn Analysis",
@@ -48,7 +49,7 @@ const RAW = {
         ),
         tags: ["Python", "Tableau", "Pandas", "Scikit-learn"],
         color: "#FF6584",
-        link: "#",
+        link: "https://github.com/Federico-Ordonselli/telco-churn-analysis",
       },
       {
         title: "Azure Data Pipeline",
@@ -60,6 +61,26 @@ const RAW = {
         color: "#43B89C",
         link: "#",
       },
+      {
+        title: "SQL Northwind Analysis",
+        desc: tr(
+          "Query SQL avanzate sul database relazionale Northwind per estrarre insight di business: revenue per categoria, top clienti, trend mensili e performance dei dipendenti.",
+          "Advanced SQL queries on the Northwind relational database to extract business insights: revenue by category, top customers, monthly trends and employee performance."
+        ),
+        tags: ["SQL", "SQLite", "Python", "Pandas"],
+        color: "#F7971E",
+        link: "https://github.com/Federico-Ordonselli/sql-northwind-analysis",
+      },
+      {
+        title: "E-commerce Sales Analysis",
+        desc: tr(
+          "Analisi esplorativa su un dataset retail reale (oltre 541.000 transazioni): trend di fatturato, prodotti top, ordini per fascia oraria e paesi per revenue.",
+          "Exploratory data analysis on a real retail dataset (541,000+ transactions): revenue trends, top products, orders by time of day and countries by revenue."
+        ),
+        tags: ["Python", "Pandas", "Matplotlib", "Seaborn"],
+        color: "#6C63FF",
+        link: "https://github.com/Federico-Ordonselli/ecommerce-sales-analysis",
+      },
     ],
     web: [
       {
@@ -70,7 +91,7 @@ const RAW = {
         ),
         tags: ["Python", "Docker", "ChromaDB", "Ollama", "RAG"],
         color: "#F7971E",
-        link: "#",
+        link: "https://github.com/Federico-Ordonselli/studybuddy",
       },
       {
         title: "qrinventory",
@@ -90,16 +111,6 @@ const RAW = {
         ),
         tags: ["Next.js", "TypeScript", "SQLite", "Docker"],
         color: "#FF6584",
-        link: "#",
-      },
-      {
-        title: "Lumen Verbi",
-        desc: tr(
-          "App React + Node/Express + Supabase + Stripe + HeyGen per conversazioni con figure bibliche in italiano. Integrazione pagamenti e video AI.",
-          "React + Node/Express + Supabase + Stripe + HeyGen app for conversations with biblical figures in Italian. Payment integration and AI video."
-        ),
-        tags: ["React", "Supabase", "Stripe", "HeyGen"],
-        color: "#43B89C",
         link: "#",
       },
     ],
@@ -123,6 +134,16 @@ const RAW = {
         tags: ["PyQt6", "SQLite", "Linux", "systemd"],
         color: "#6C63FF",
         link: "#",
+      },
+      {
+        title: "Security Log Analysis",
+        desc: tr(
+          "Analisi di log SSH con Python per identificare tentativi di brute-force e IP sospetti. Pulizia dati, aggregazioni e visualizzazioni.",
+          "SSH log analysis in Python to detect brute-force attempts and suspicious IPs. Data cleaning, aggregations and visualizations."
+        ),
+        tags: ["Python", "Pandas", "Security", "Log Analysis"],
+        color: "#FF6584",
+        link: "https://github.com/Federico-Ordonselli/security-log-analysis",
       },
     ],
   },
@@ -302,6 +323,7 @@ const RAW = {
       about: tr("Chi sono", "About"),
     },
     footerSuffix: tr("Roma, Italia", "Rome, Italy"),
+    downloadCv: tr("Scarica CV", "Download CV"),
     projectsPage: {
       subtitle: tr("Portfolio", "Portfolio"),
       title: tr("Progetti", "Projects"),
