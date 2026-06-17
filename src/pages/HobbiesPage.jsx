@@ -1,13 +1,15 @@
-import { DATA } from "../data/content.js";
+import { getContent } from "../data/content.js";
 import SectionHeader from "../components/SectionHeader.jsx";
 import Card from "../components/Card.jsx";
 
-function HobbiesPage() {
+function HobbiesPage({ lang }) {
+  const DATA = getContent(lang);
+  const t = DATA.ui.hobbiesPage;
   return (
     <div style={{ padding: "60px 24px", maxWidth: 1100, margin: "0 auto" }}>
       <SectionHeader
-        title="Hobby Tecnici"
-        subtitle="Beyond Code"
+        title={t.title}
+        subtitle={t.subtitle}
         accent="#FF6584"
       />
       <div style={{

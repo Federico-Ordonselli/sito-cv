@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-import { DATA } from "../data/content.js";
+import { getContent } from "../data/content.js";
 
-function HomePage({ setPage }) {
+function HomePage({ setPage, lang }) {
   const [visible, setVisible] = useState(false);
   useEffect(() => { setTimeout(() => setVisible(true), 100); }, []);
 
+  const DATA = getContent(lang);
+  const { nav } = DATA.ui;
   const gradient = "linear-gradient(135deg, #6C63FF, #FF6584, #F7971E)";
 
   return (
@@ -99,9 +101,9 @@ function HomePage({ setPage }) {
           transition: "all 0.6s cubic-bezier(0.4,0,0.2,1) 0.55s",
         }}>
           {[
-            { label: "Progetti", page: "projects", color: "#6C63FF" },
-            { label: "Hobby", page: "hobbies", color: "#FF6584" },
-            { label: "Chi sono", page: "about", color: "#F7971E" },
+            { label: nav.projects, page: "projects", color: "#6C63FF" },
+            { label: nav.hobbies, page: "hobbies", color: "#FF6584" },
+            { label: nav.about, page: "about", color: "#F7971E" },
           ].map((btn) => (
             <button
               key={btn.page}

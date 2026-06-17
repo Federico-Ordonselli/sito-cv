@@ -1,13 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import ProjectsPage from "./pages/ProjectsPage.jsx";
 import CertificationsPage from "./pages/CertificationsPage.jsx";
 import HobbiesPage from "./pages/HobbiesPage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
+import { getContent } from "./data/content.js";
 
 export default function App() {
   const [page, setPage] = useState("home");
+  const [lang, setLang] = useState(() => {
+    const saved = typeof localStorage !== "undefined" && localStorage.getItem("lang");
+    return saved === "en" || saved === "it" ? saved : "it";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("lang", lang);
+    document.documentElement.lang = lang;
+  }, [lang]);
+
+  const D = getContent(lang);
 
   return (
     <div style={{
@@ -61,15 +73,15 @@ export default function App() {
       `}</style>
 
       {/* Navbar */}
-      <Navbar page={page} setPage={setPage} />
+      <Navbar page={page} setPage={setPage} lang={lang} setLang={setLang} />
 
       {/* Content */}
       <main>
-        {page === "home" && <HomePage setPage={setPage} />}
-        {page === "projects" && <ProjectsPage />}
-        {page === "certifications" && <CertificationsPage />}
-        {page === "hobbies" && <HobbiesPage />}
-        {page === "about" && <AboutPage />}
+        {page === "home" && <HomePage setPage={setPage} lang={lang} />}
+        {page === "projects" && <ProjectsPage lang={lang} />}
+        {page === "certifications" && <CertificationsPage lang={lang} />}
+        {page === "hobbies" && <HobbiesPage lang={lang} />}
+        {page === "about" && <AboutPage lang={lang} />}
       </main>
 
       {/* Footer */}
@@ -82,7 +94,7 @@ export default function App() {
           borderTop: "1px solid #1e1e3e",
           marginTop: 40,
         }}>
-          Federico · Roma, Italia · {new Date().getFullYear()}
+          Federico · {D.ui.footerSuffix} · {new Date().getFullYear()}
         </footer>
       )}
     </div>

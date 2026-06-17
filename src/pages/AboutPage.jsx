@@ -1,15 +1,17 @@
 import { useState } from "react";
-import { DATA } from "../data/content.js";
+import { getContent } from "../data/content.js";
 import SectionHeader from "../components/SectionHeader.jsx";
 
-function AboutPage() {
+function AboutPage({ lang }) {
   const [spotifyVisible, setSpotifyVisible] = useState(false);
+  const DATA = getContent(lang);
+  const t = DATA.ui.aboutPage;
 
   return (
     <div style={{ padding: "60px 24px", maxWidth: 900, margin: "0 auto" }}>
       <SectionHeader
-        title="Chi sono"
-        subtitle="About"
+        title={t.title}
+        subtitle={t.subtitle}
         accent="#F7971E"
       />
 
@@ -61,7 +63,7 @@ function AboutPage() {
       {/* Certificazioni */}
       <div style={{ marginBottom: 40 }}>
         <h3 style={{ color: "#9090b0", fontSize: 14, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 16 }}>
-          Certificazioni
+          {t.certsHeading}
         </h3>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
           {DATA.about.certs.map((c) => (
@@ -83,7 +85,7 @@ function AboutPage() {
       {/* Spotify */}
       <div>
         <h3 style={{ color: "#9090b0", fontSize: 14, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 16 }}>
-          🎵 La mia playlist
+          {t.playlistHeading}
         </h3>
         <div style={{
           borderRadius: 16,
@@ -109,7 +111,7 @@ function AboutPage() {
               }}
             >
               <span style={{ fontSize: 28 }}>🎵</span>
-              Carica il player Spotify
+              {t.loadSpotify}
             </button>
           ) : (
             <iframe
@@ -123,9 +125,6 @@ function AboutPage() {
             />
           )}
         </div>
-        <p style={{ color: "#3030a0", fontSize: 12, marginTop: 8 }}>
-          Sostituisci il link Spotify con la tua playlist pubblica in DATA.about.spotify
-        </p>
       </div>
     </div>
   );

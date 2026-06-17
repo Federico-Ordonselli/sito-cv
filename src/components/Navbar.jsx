@@ -1,10 +1,13 @@
-function Navbar({ page, setPage }) {
+import { getContent, LANGS } from "../data/content.js";
+
+function Navbar({ page, setPage, lang, setLang }) {
+  const { nav } = getContent(lang).ui;
   const navItems = [
-    { id: "home", label: "Home" },
-    { id: "projects", label: "Progetti" },
-    { id: "certifications", label: "Certificazioni" },
-    { id: "hobbies", label: "Hobby" },
-    { id: "about", label: "Chi sono" },
+    { id: "home", label: nav.home },
+    { id: "projects", label: nav.projects },
+    { id: "certifications", label: nav.certifications },
+    { id: "hobbies", label: nav.hobbies },
+    { id: "about", label: nav.about },
   ];
 
   return (
@@ -35,7 +38,7 @@ function Navbar({ page, setPage }) {
       >
         ordonselli.info
       </span>
-      <div style={{ display: "flex", gap: 4 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
         {navItems.filter(n => n.id !== "home").map((item) => (
           <button
             key={item.id}
@@ -55,6 +58,36 @@ function Navbar({ page, setPage }) {
             {item.label}
           </button>
         ))}
+
+        {/* Language toggle */}
+        <div style={{
+          display: "flex",
+          marginLeft: 8,
+          border: "1px solid #2a2a4a",
+          borderRadius: 8,
+          overflow: "hidden",
+        }}>
+          {LANGS.map((l) => (
+            <button
+              key={l}
+              onClick={() => setLang(l)}
+              aria-label={`Switch to ${l.toUpperCase()}`}
+              style={{
+                background: lang === l ? "#6C63FF" : "transparent",
+                color: lang === l ? "#fff" : "#6060a0",
+                border: "none",
+                padding: "6px 10px",
+                fontSize: 12,
+                fontWeight: 700,
+                letterSpacing: 0.5,
+                cursor: "pointer",
+                transition: "all 0.2s",
+              }}
+            >
+              {l.toUpperCase()}
+            </button>
+          ))}
+        </div>
       </div>
     </nav>
   );

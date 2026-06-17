@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { DATA } from "../data/content.js";
+import { getContent } from "../data/content.js";
 import SectionHeader from "../components/SectionHeader.jsx";
 import SubSection from "../components/SubSection.jsx";
 
-function CertCard({ cert, color, onOpen }) {
+function CertCard({ cert, color, onOpen, t }) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -64,14 +64,14 @@ function CertCard({ cert, color, onOpen }) {
         display: "flex", alignItems: "center", gap: 8,
         color: color, fontSize: 13, fontWeight: 700,
       }}>
-        <span>Visualizza certificato</span>
+        <span>{t.view}</span>
         <span style={{ transition: "transform 0.3s", transform: hovered ? "translateX(4px)" : "none" }}>→</span>
       </div>
     </div>
   );
 }
 
-function PdfModal({ cert, color, onClose }) {
+function PdfModal({ cert, color, onClose, t }) {
   useEffect(() => {
     const onKey = (e) => { if (e.key === "Escape") onClose(); };
     document.addEventListener("keydown", onKey);
@@ -139,7 +139,7 @@ function PdfModal({ cert, color, onClose }) {
                 border: `1px solid ${color}44`,
               }}
             >
-              Verifica ↗
+              {t.verify} ↗
             </a>
           )}
           <a
@@ -153,11 +153,11 @@ function PdfModal({ cert, color, onClose }) {
               border: "1px solid #2a2a3e",
             }}
           >
-            Apri ↗
+            {t.open} ↗
           </a>
           <button
             onClick={onClose}
-            aria-label="Chiudi"
+            aria-label={t.close}
             style={{
               background: "transparent", border: "1px solid #2a2a3e",
               color: "#9090b0", borderRadius: 8, cursor: "pointer",
@@ -180,19 +180,21 @@ function PdfModal({ cert, color, onClose }) {
   );
 }
 
-function CertificationsPage() {
+function CertificationsPage({ lang }) {
   const [active, setActive] = useState(null);
+  const DATA = getContent(lang);
+  const t = DATA.ui.certsPage;
 
   return (
     <div style={{ padding: "60px 24px", maxWidth: 1100, margin: "0 auto" }}>
       <SectionHeader
-        title="Certificazioni"
-        subtitle="Credenziali"
+        title={t.title}
+        subtitle={t.subtitle}
         accent="#43B89C"
       />
 
       <p style={{ color: "#9090b0", fontSize: 16, lineHeight: 1.7, marginTop: -16, marginBottom: 48, maxWidth: 700 }}>
-        Clicca su una certificazione per visualizzare il PDF originale.
+        {t.intro}
       </p>
 
       {DATA.certifications.map((group) => (
@@ -203,6 +205,7 @@ function CertificationsPage() {
               cert={cert}
               color={group.color}
               onOpen={setActive}
+              t={t}
             />
           ))}
         </SubSection>
@@ -217,6 +220,7 @@ function CertificationsPage() {
             )?.color || "#43B89C"
           }
           onClose={() => setActive(null)}
+          t={t}
         />
       )}
     </div>
