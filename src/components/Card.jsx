@@ -31,7 +31,7 @@ function Card({ title, desc, tags, color, link, icon, delay = 0 }) {
       onMouseEnter={() => setHovered(true)}
       onMouseMove={handleMove}
       onMouseLeave={reset}
-      onClick={() => link && link !== "#" && window.open(link, "_blank")}
+      onClick={() => link && link !== "#" && window.open(link, "_blank", "noopener,noreferrer")}
       style={{
         background: hovered ? "#1e1e2e" : "#161622",
         border: `1px solid ${hovered ? color : "#2a2a3e"}`,
