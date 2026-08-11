@@ -84,6 +84,16 @@ const RAW = {
     ],
     web: [
       {
+        title: "Runebog GM",
+        desc: tr(
+          "Applicazione web per Game Master di giochi di ruolo: mappe annidabili di città e dungeon, 331 schede mostro SRD 5.2.1 in italiano, generatore di dungeon deterministico e tavolo condiviso in sola lettura per i giocatori. Sito Next.js 15 su Postgres, editor JavaScript vanilla senza build step.",
+          "A web app for tabletop RPG Game Masters: infinitely nested maps of cities and dungeons, 331 Italian D&D 5e SRD monster stat blocks, a deterministic dungeon generator and a read-only shared table for players. Next.js 15 on Postgres for the site, framework-free vanilla JavaScript for the editor."
+        ),
+        tags: ["Next.js 15", "React 19", "TypeScript", "PostgreSQL", "PWA"],
+        color: "#43B89C",
+        link: "https://runebog.app",
+      },
+      {
         title: "StudyBuddy",
         desc: tr(
           "RAG pipeline locale con Ollama, ChromaDB e Docker Compose. GPU passthrough NVIDIA, pipeline Groq Whisper per trascrizione VOD. Il mio progetto portfolio più solido.",
