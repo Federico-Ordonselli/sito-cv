@@ -1,64 +1,105 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useLayoutEffect, useRef } from "react";
 import Tag from "./Tag.jsx";
 
+const TILT_MAX = 8;
+
+const media = (query) =>
+  typeof window !== "undefined" && window.matchMedia(query).matches;
+
+// Il tilt ha senso solo con un puntatore preciso: su touch non c'è hover, e con
+// prefers-reduced-motion va spento del tutto.
+const canTilt = () =>
+  media("(hover: hover) and (pointer: fine)") &&
+  !media("(prefers-reduced-motion: reduce)");
+
 function Card({ title, desc, tags, color, link, icon, delay = 0 }) {
-  const [visible, setVisible] = useState(false);
+  // La card parte VISIBILE e si nasconde solo se, al primo layout, è sotto la
+  // piega: così il contenuto non dipende mai dal completamento di una
+  // transizione. Chi renderizza la pagina senza aspettare (crawler, anteprime
+  // dei link, screenshot headless) vede comunque quello che c'è a schermo.
+  const [visible, setVisible] = useState(true);
   const [hovered, setHovered] = useState(false);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const ref = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    if (media("(prefers-reduced-motion: reduce)")) return;
+    if (el.getBoundingClientRect().top < window.innerHeight * 0.9) return;
+
+    setVisible(false);
     const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) setVisible(true); },
+      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
       { threshold: 0.1 }
     );
-    if (ref.current) obs.observe(ref.current);
+    obs.observe(el);
     return () => obs.disconnect();
   }, []);
 
+  // Il tilt scrive due custom property invece di passare da uno stato React:
+  // altrimenti ogni mousemove causava un render dell'intera card.
   const handleMove = (e) => {
-    const r = ref.current.getBoundingClientRect();
+    const el = ref.current;
+    if (!el || !canTilt()) return;
+    const r = el.getBoundingClientRect();
     const px = (e.clientX - r.left) / r.width - 0.5;
     const py = (e.clientY - r.top) / r.height - 0.5;
-    setTilt({ x: -py * 8, y: px * 8 });
+    el.style.setProperty("--tilt-x", `${-py * TILT_MAX}deg`);
+    el.style.setProperty("--tilt-y", `${px * TILT_MAX}deg`);
   };
 
-  const reset = () => { setHovered(false); setTilt({ x: 0, y: 0 }); };
+  const resetTilt = () => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.setProperty("--tilt-x", "0deg");
+    el.style.setProperty("--tilt-y", "0deg");
+  };
+
+  const leave = () => { setHovered(false); resetTilt(); };
+
+  const interactive = Boolean(link) && link !== "#";
+  const Root = interactive ? "a" : "div";
+  const linkProps = interactive
+    ? { href: link, target: "_blank", rel: "noopener noreferrer" }
+    : {};
 
   return (
-    <div
+    <Root
       ref={ref}
+      className={interactive ? "card card--link" : "card"}
+      {...linkProps}
       onMouseEnter={() => setHovered(true)}
       onMouseMove={handleMove}
-      onMouseLeave={reset}
-      onClick={() => link && link !== "#" && window.open(link, "_blank", "noopener,noreferrer")}
+      onMouseLeave={leave}
       style={{
-        background: hovered ? "#1e1e2e" : "#161622",
-        border: `1px solid ${hovered ? color : "#2a2a3e"}`,
+        "--accent": color,
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        // L'accento resta sul bordo e in un alone d'angolo: niente banda
+        // colorata sul lato sinistro.
+        background: `radial-gradient(130% 90% at 100% 0%, ${color}${hovered ? "26" : "16"}, transparent 55%), ${hovered ? "#1e1e2e" : "#161622"}`,
+        border: `1px solid ${hovered ? color : color + "33"}`,
         borderRadius: 16,
         padding: "24px 28px",
-        cursor: link && link !== "#" ? "pointer" : "default",
+        textDecoration: "none",
+        color: "inherit",
+        cursor: interactive ? "pointer" : "default",
         transition: hovered
-          ? "background 0.3s, border 0.3s, box-shadow 0.3s"
-          : "all 0.5s cubic-bezier(0.4,0,0.2,1)",
+          ? "background 0.3s, border-color 0.3s, box-shadow 0.3s, translate 0.3s cubic-bezier(0.16,1,0.3,1)"
+          : "opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1), translate 0.3s cubic-bezier(0.16,1,0.3,1), background 0.3s, border-color 0.3s, box-shadow 0.3s",
         transform: visible
-          ? `perspective(800px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) translateY(${hovered ? -4 : 0}px)`
+          ? "perspective(800px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg))"
           : "perspective(800px) translateY(24px)",
+        translate: hovered ? "0 -4px" : "0 0",
         opacity: visible ? 1 : 0,
-        transitionDelay: visible && !hovered ? `${delay}ms` : "0ms",
+        transitionDelay: visible && !hovered ? `${Math.min(delay, 240)}ms` : "0ms",
         boxShadow: hovered ? `0 12px 40px ${color}44` : "none",
         position: "relative",
         overflow: "hidden",
         transformStyle: "preserve-3d",
       }}
     >
-      <div
-        style={{
-          position: "absolute", top: 0, left: 0, width: 4,
-          height: "100%", background: color,
-          borderRadius: "16px 0 0 16px",
-        }}
-      />
       {/* Shimmer sweep on hover */}
       {hovered && (
         <div style={{
@@ -77,17 +118,17 @@ function Card({ title, desc, tags, color, link, icon, delay = 0 }) {
           display: "inline-block",
         }}>{icon}</div>
       )}
-      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
-        <h3 style={{ margin: 0, color: "#e0e0f0", fontSize: 18, fontWeight: 700 }}>{title}</h3>
-        {link && link !== "#" && (
-          <span style={{ color: color, fontSize: 14 }}>↗</span>
+      <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 8 }}>
+        <h3 style={{ margin: 0, color: "#e0e0f0", fontSize: 18, fontWeight: 700, textWrap: "balance" }}>{title}</h3>
+        {interactive && (
+          <span aria-hidden="true" style={{ color, fontSize: 14, flexShrink: 0 }}>↗</span>
         )}
       </div>
-      <p style={{ margin: "0 0 16px", color: "#9090b0", fontSize: 14, lineHeight: 1.7 }}>{desc}</p>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+      <p style={{ margin: "0 0 20px", color: "#9797b8", fontSize: 14, lineHeight: 1.7, textWrap: "pretty" }}>{desc}</p>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: "auto" }}>
         {tags.map((t) => <Tag key={t} label={t} color={color} />)}
       </div>
-    </div>
+    </Root>
   );
 }
 

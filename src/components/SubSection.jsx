@@ -8,7 +8,9 @@ function SubSection({ title, color, children }) {
       </div>
       <div style={{
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+        // min() evita che sotto i 348px di viewport la traccia da 300px sfori
+        // il contenitore e faccia scorrere la pagina in orizzontale.
+        gridTemplateColumns: "repeat(auto-fill, minmax(min(300px, 100%), 1fr))",
         gap: 20,
       }}>
         {children}

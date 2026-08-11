@@ -83,6 +83,12 @@ export default function App() {
           100% { background-position: 200% 0; }
         }
         * { box-sizing: border-box; }
+        /* Le card cliccabili sono <a>: senza questo la navigazione da tastiera
+           non ha nessun indicatore visibile. --accent è l'accento della card. */
+        .card--link:focus-visible {
+          outline: 2px solid var(--accent, #6C63FF);
+          outline-offset: 3px;
+        }
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #0d0d1a; }
         ::-webkit-scrollbar-thumb { background: #2a2a4a; border-radius: 3px; }
@@ -112,7 +118,7 @@ export default function App() {
         <footer style={{
           textAlign: "center",
           padding: "40px 24px",
-          color: "#3030a0",
+          color: "#7a7ab0",
           fontSize: 13,
           borderTop: "1px solid #1e1e3e",
           marginTop: 40,
