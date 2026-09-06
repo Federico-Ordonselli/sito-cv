@@ -84,6 +84,16 @@ const RAW = {
     ],
     web: [
       {
+        title: "Trekking Marti",
+        desc: tr(
+          "Sito di prenotazione e pagamento per un'organizzatrice di trekking guidati. Bilingue, con catalogo che la cliente gestisce da sola e checkout Stripe a due fasi per i viaggi multi-giorno. Contenuti su Sanity, denaro su Postgres: un lock per partenza contro l'overbooking, transizioni di stato idempotenti sui webhook.",
+          "A booking and payment site for a guided trekking organiser. Bilingual, with a catalogue the client manages herself and a two-phase Stripe checkout for multi-day trips. Content lives in Sanity, money in Postgres: a per-departure lock against overbooking, idempotent state transitions on every webhook."
+        ),
+        tags: ["Next.js 16", "TypeScript", "Stripe", "PostgreSQL", "Sanity"],
+        color: "#6C63FF",
+        link: "#",
+      },
+      {
         title: "Runebog GM",
         desc: tr(
           "Applicazione web per Game Master di giochi di ruolo: mappe annidabili di città e dungeon, 331 schede mostro SRD 5.2.1 in italiano, generatore procedurale e tavolo in sola lettura per i giocatori. Next.js 15 su Postgres, editor JavaScript vanilla senza build.",
