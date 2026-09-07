@@ -63,7 +63,7 @@ function Navbar({ page, setPage, lang, setLang }) {
           aria-label={`Switch to ${l.toUpperCase()}`}
           style={{
             background: lang === l ? "#6C63FF" : "transparent",
-            color: lang === l ? "#fff" : "#6060a0",
+            color: lang === l ? "#fff" : "#7a7ab0",
             border: "none",
             padding: "6px 10px",
             fontSize: 12,
@@ -116,7 +116,7 @@ function Navbar({ page, setPage, lang, setLang }) {
               onClick={() => setPage(item.id)}
               style={{
                 background: page === item.id ? "#6C63FF22" : "transparent",
-                color: page === item.id ? "#6C63FF" : "#6060a0",
+                color: page === item.id ? "#a09aff" : "#9090b0",
                 border: page === item.id ? "1px solid #6C63FF44" : "1px solid transparent",
                 borderRadius: 8,
                 padding: "6px 16px",
@@ -196,7 +196,7 @@ function Navbar({ page, setPage, lang, setLang }) {
               onClick={() => goTo(item.id)}
               style={{
                 background: page === item.id ? "#6C63FF22" : "transparent",
-                color: page === item.id ? "#6C63FF" : "#9090b0",
+                color: page === item.id ? "#a09aff" : "#9090b0",
                 border: page === item.id ? "1px solid #6C63FF44" : "1px solid transparent",
                 borderRadius: 8,
                 padding: "12px 16px",

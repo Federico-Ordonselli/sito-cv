@@ -42,7 +42,7 @@ function CertCard({ cert, color, onOpen, t }) {
         }}>📄</div>
         <div style={{ minWidth: 0 }}>
           <div style={{
-            color: "#5050a0", fontSize: 11, fontWeight: 700,
+            color: "#7a7ab0", fontSize: 11, fontWeight: 700,
             letterSpacing: 1, textTransform: "uppercase",
           }}>
             {cert.issuer}
@@ -122,7 +122,7 @@ function PdfModal({ cert, color, onClose, t }) {
             }}>
               {cert.name}
             </h3>
-            <div style={{ color: "#5050a0", fontSize: 12, fontWeight: 600 }}>
+            <div style={{ color: "#7a7ab0", fontSize: 12, fontWeight: 600 }}>
               {cert.issuer}{cert.date ? ` · ${cert.date}` : ""}
             </div>
           </div>

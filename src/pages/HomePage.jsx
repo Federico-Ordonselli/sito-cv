@@ -104,7 +104,7 @@ function HomePage({ setPage, lang }) {
           {DATA.role}
         </p>
         <p style={{
-          fontSize: 16, color: "#6060a0", margin: "0 0 48px",
+          fontSize: 16, color: "#8080b8", margin: "0 0 48px",
           lineHeight: 1.7, maxWidth: 500, marginLeft: "auto", marginRight: "auto",
           opacity: visible ? 1 : 0,
           transform: visible ? "translateY(0)" : "translateY(20px)",
@@ -224,7 +224,7 @@ function HomePage({ setPage, lang }) {
             { label: "📍 " + DATA.location },
             { label: "✉️ " + DATA.email },
           ].map((item) => (
-            <span key={item.label} style={{ color: "#5050a0", fontSize: 14 }}>
+            <span key={item.label} style={{ color: "#7a7ab0", fontSize: 14 }}>
               {item.label}
             </span>
           ))}
