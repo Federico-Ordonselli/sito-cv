@@ -18,10 +18,10 @@ function resolve(node, lang) {
 // ─── DATI ────────────────────────────────────────────────────────────────────
 const RAW = {
   name: "Federico",
-  role: "Junior Data Analyst · Security · Builder",
+  role: "Junior Full-Stack Developer · Security · Builder",
   tagline: tr(
-    "Trasformo dati in decisioni. Costruisco cose, digitali e fisiche.",
-    "I turn data into decisions. I build things — digital and physical."
+    "Sviluppo applicazioni web in React e Next.js, dal database al checkout. Costruisco cose, digitali e fisiche.",
+    "I build web applications in React and Next.js, from the database to the checkout. I build things — digital and physical."
   ),
   location: tr("Roma, Italia", "Rome, Italy"),
   email: "fede.ordons@gmail.com",
@@ -104,16 +104,6 @@ const RAW = {
         link: "https://runebog.app",
       },
       {
-        title: "StudyBuddy",
-        desc: tr(
-          "RAG pipeline locale con Ollama, ChromaDB e Docker Compose. GPU passthrough NVIDIA, pipeline Groq Whisper per trascrizione VOD. Il mio progetto portfolio più solido.",
-          "Local RAG pipeline with Ollama, ChromaDB and Docker Compose. NVIDIA GPU passthrough, Groq Whisper pipeline for VOD transcription. My most solid portfolio project."
-        ),
-        tags: ["Python", "Docker", "ChromaDB", "Ollama", "RAG"],
-        color: "#F7971E",
-        link: "https://github.com/Federico-Ordonselli/studybuddy",
-      },
-      {
         title: "qrinventory",
         desc: tr(
           "Sistema inventario con FastAPI + SQLModel, generazione QR code e PDF. Autenticazione JWT/OAuth2, deploy su Railway.",
@@ -135,6 +125,16 @@ const RAW = {
       },
     ],
     cyber: [
+      {
+        title: "StudyBuddy",
+        desc: tr(
+          "RAG pipeline locale con Ollama, ChromaDB e Docker Compose. GPU passthrough NVIDIA e pipeline Groq Whisper per trascrivere le VOD prima di indicizzarle.",
+          "Local RAG pipeline with Ollama, ChromaDB and Docker Compose. NVIDIA GPU passthrough and a Groq Whisper pipeline that transcribes VODs before indexing them."
+        ),
+        tags: ["Python", "Docker", "ChromaDB", "Ollama", "RAG"],
+        color: "#F7971E",
+        link: "https://github.com/Federico-Ordonselli/studybuddy",
+      },
       {
         title: "D&D Transcription App",
         desc: tr(
@@ -213,8 +213,8 @@ const RAW = {
 
   about: {
     bio: tr(
-      "Sono Federico, Junior Data Analyst a Roma con background in sicurezza operativa all'aeroporto di Fiumicino (ICTS). Ho scoperto la data analysis e non ho più smesso. Certificato IBM Data Analyst, CompTIA Security+ e CySA+, con PL-300 in corso.",
-      "I'm Federico, a Junior Data Analyst in Rome with a background in operational security at Fiumicino Airport (ICTS). I discovered data analysis and never looked back. IBM Data Analyst, CompTIA Security+ and CySA+ certified, with PL-300 in progress."
+      "Sono Federico, sviluppatore full-stack a Roma. Vengo da due anni di sicurezza operativa all'aeroporto di Fiumicino (ICTS): un ambiente 24/7 dove una procedura saltata si vede subito, e dove ho imparato a lavorare per escalation e verifiche. Oggi costruisco applicazioni React e Next.js — l'ultima è una piattaforma di prenotazione e pagamento che la cliente gestisce da sola. Certificato CompTIA Security+ e CySA+: la sicurezza applicativa non è un modulo che aggiungo alla fine.",
+      "I'm Federico, a full-stack developer based in Rome. I come from two years in operational security at Fiumicino Airport (ICTS): a 24/7 environment where a skipped procedure shows immediately, and where I learned to work through escalation and verification. These days I build React and Next.js applications — the latest one is a booking and payment platform the client runs on her own. CompTIA Security+ and CySA+ certified: application security isn't a module I bolt on at the end."
     ),
     facts: [
       { label: tr("Videogioco preferito", "Favorite video game"), value: tr("Street Fighter 6 — main Cammy", "Street Fighter 6 — Cammy main"), icon: "🕹️" },
@@ -226,10 +226,41 @@ const RAW = {
     ],
     spotify: "https://open.spotify.com/embed/track/6LgJvl0Xdtc73RJ1mmpotq?utm_source=generator&si=c53ea5d1921441cc",
     certs: [
-      { name: "IBM Data Analyst Professional", color: "#6C63FF" },
       { name: "CompTIA Security+", color: "#FF6584" },
       { name: "CompTIA CySA+", color: "#43B89C" },
-      { name: tr("PL-300 Power BI (in corso)", "PL-300 Power BI (in progress)"), color: "#F7971E" },
+      { name: "IBM Data Analyst Professional", color: "#6C63FF" },
+      { name: tr("Meta Front-End Developer (in corso)", "Meta Front-End Developer (in progress)"), color: "#F7971E" },
+    ],
+
+    // Stack allineato al CV. I nomi delle tecnologie non passano da tr():
+    // "PostgreSQL" è "PostgreSQL" in entrambe le lingue, solo le etichette
+    // dei gruppi sono tradotte.
+    skills: [
+      {
+        label: tr("Core", "Core"),
+        color: "#6C63FF",
+        items: ["TypeScript", "JavaScript", "React", "Next.js", "HTML", "CSS", "Tailwind CSS", "Python"],
+      },
+      {
+        label: tr("Backend e dati", "Backend & data"),
+        color: "#43B89C",
+        items: ["Node.js", "Express", "FastAPI", "PostgreSQL", "Drizzle ORM", "SQLite", "REST API"],
+      },
+      {
+        label: tr("Servizi e infrastruttura", "Services & infrastructure"),
+        color: "#F7971E",
+        items: ["Stripe", "Sanity", "Auth.js", "Clerk", "Resend", "Vercel", "Neon", "Azure", "Terraform"],
+      },
+      {
+        label: tr("Sistemi e workflow", "Systems & workflow"),
+        color: "#FF6584",
+        items: ["Arch Linux", "Bash/CLI", "Docker", "GitHub Actions", tr("Modelli AI locali", "Local AI models")],
+      },
+      {
+        label: tr("Qualità e sicurezza", "Quality & security"),
+        color: "#6C63FF",
+        items: ["Vitest", "node:test", "CI/CD", tr("Accessibilità WCAG", "WCAG accessibility"), "OAuth", "XSS prevention"],
+      },
     ],
   },
 
@@ -370,6 +401,7 @@ const RAW = {
     aboutPage: {
       subtitle: tr("About", "About"),
       title: tr("Chi sono", "About me"),
+      skillsHeading: tr("Competenze tecniche", "Technical skills"),
       certsHeading: tr("Certificazioni", "Certifications"),
       playlistHeading: tr("🎵 Canzone preferita", "🎵 Favourite song"),
       loadSpotify: tr("Carica il player Spotify", "Load the Spotify player"),
