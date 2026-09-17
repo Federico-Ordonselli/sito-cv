@@ -45,3 +45,16 @@ src/
   App.jsx                # layout, navbar, footer, keyframes, switch pagine
   main.jsx               # entry point
 ```
+
+## Anteprime delle certificazioni
+
+Le card mostrano immagini della prima pagina dei PDF, salvate in
+`public/certs/previews/`. Dopo aver aggiunto o sostituito un certificato,
+rigenerale con:
+
+```bash
+node scripts/generate-cert-previews.mjs
+```
+
+Il comando richiede `pdftoppm` (Poppler). Le immagini generate vanno incluse nel
+commit; il sito e la build non richiedono Poppler.

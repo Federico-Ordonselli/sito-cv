@@ -56,7 +56,16 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
 .card-icon { font-size: 26px; margin-bottom: 18px; }
 .card-tags { margin-top: auto; display: flex; flex-wrap: wrap; gap: 7px; }
 .tag { padding: 4px 9px; border: 1px solid var(--border); border-radius: 4px; color: #b5bfb5; font-size: 11px; font-weight: 500; line-height: 1.5; }
-.cert-card { text-align: left; font-family: inherit; color: var(--text); width: 100%; }
+/* Static first-page previews keep the certificate grid light on mobile. */
+.cert-card { display: flex; flex-direction: column; width: 100%; height: 100%; padding: 0; overflow: hidden; text-align: left; font-family: inherit; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: 10px; cursor: pointer; transition: border-color .2s, transform .2s; }
+.cert-card:hover { border-color: #71836e; transform: translateY(-3px); }
+.cert-preview { display: flex; align-items: center; justify-content: center; width: 100%; aspect-ratio: 4 / 3; padding: 0; background: #e9eae5; border-bottom: 1px solid var(--border); }
+.cert-preview img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.cert-preview-fallback { color: #53604f; font-size: 32px; letter-spacing: 4px; }
+.cert-details { display: flex; flex: 1; flex-direction: column; width: 100%; padding: 22px; }
+.cert-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 12px; margin-bottom: 12px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.cert-title { margin-bottom: 22px; font-size: 16px; line-height: 1.5; font-weight: 600; }
+.cert-action { display: flex; justify-content: space-between; gap: 12px; margin-top: auto; color: var(--accent); font-size: 13px; font-weight: 600; }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 @media (max-width: 480px) {
   .home { padding: 56px 20px; }

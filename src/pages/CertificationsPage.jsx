@@ -4,71 +4,26 @@ import SectionHeader from "../components/SectionHeader.jsx";
 import SubSection from "../components/SubSection.jsx";
 
 function CertCard({ cert, onOpen, t }) {
-  const [hovered, setHovered] = useState(false);
+  const [previewFailed, setPreviewFailed] = useState(false);
+  const preview = cert.file.replace('/certs/', '/certs/previews/').replace(/\.pdf$/, '.jpg');
 
   return (
-    <button
-      type="button"
-      className="cert-card"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onClick={() => onOpen(cert)}
-      style={{
-        background: hovered ? "#202723" : "#1a1f1d",
-        border: hovered ? "1px solid var(--accent)" : "1px solid var(--border)",
-        borderRadius: 16,
-        padding: "22px 24px",
-        cursor: "pointer",
-        transition: "background 0.3s, border 0.3s, box-shadow 0.3s, transform 0.3s",
-        transform: hovered ? "translateY(-4px)" : "translateY(0)",
-        boxShadow: "none",
-        position: "relative",
-        overflow: "hidden",
-        display: "flex",
-        flexDirection: "column",
-        height: "100%",
-      }}
-    >
-      <div style={{
-        position: "absolute", top: 0, left: 0, width: 4,
-        height: "100%", background: "var(--border)", borderRadius: "16px 0 0 16px",
-      }} />
-
-      <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
-        <div style={{
-          width: 40, height: 40, flexShrink: 0,
-          borderRadius: 10,
-          background: "var(--surface)",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          fontSize: 20,
-        }}>📄</div>
-        <div style={{ minWidth: 0 }}>
-          <div style={{
-            color: "#9ca99e", fontSize: 11, fontWeight: 700,
-            letterSpacing: 1, textTransform: "uppercase",
-          }}>
-            {cert.issuer}
-          </div>
-          {cert.date && (
-            <div style={{ color: "#9ca99e", fontSize: 12, fontWeight: 600 }}>{cert.date}</div>
-          )}
-        </div>
-      </div>
-
-      <h3 style={{
-        margin: "0 0 16px", color: "#eef1eb",
-        fontSize: 16, fontWeight: 700, lineHeight: 1.4, flex: 1,
-      }}>
-        {cert.name}
-      </h3>
-
-      <div style={{
-        display: "flex", alignItems: "center", gap: 8,
-        color: "var(--accent)", fontSize: 13, fontWeight: 700,
-      }}>
-        <span>{t.view}</span>
-        <span style={{ transition: "transform 0.3s", transform: hovered ? "translateX(4px)" : "none" }}>→</span>
-      </div>
+    <button type="button" className="cert-card" onClick={() => onOpen(cert)}>
+      <span className="cert-preview" aria-hidden="true">
+        {previewFailed ? (
+          <span className="cert-preview-fallback">PDF</span>
+        ) : (
+          <img src={preview} alt="" loading="lazy" decoding="async" onError={() => setPreviewFailed(true)} />
+        )}
+      </span>
+      <span className="cert-details">
+        <span className="cert-meta">
+          <span>{cert.issuer}</span>
+          {cert.date && <span>{cert.date}</span>}
+        </span>
+        <span className="cert-title">{cert.name}</span>
+        <span className="cert-action">{t.view} <span aria-hidden="true">↗</span></span>
+      </span>
     </button>
   );
 }

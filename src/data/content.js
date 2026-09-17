@@ -34,48 +34,48 @@ const RAW = {
       {
         title: "NTSB Aviation Safety Analysis",
         desc: tr(
-          "Analisi dei dati NTSB sugli incidenti aerei, con Python e Power BI, per studiare gli andamenti stagionali e le relazioni tra meteo e incidenti.",
-          "Analysis of NTSB aviation accident data using Python and Power BI to study seasonal patterns and the relationship between weather and accidents."
+          "Analisi di 7.438 incidenti aerei negli Stati Uniti, con pulizia dei dati in Python e dashboard Power BI. Esplora tipologie di volo, gravità e distribuzione geografica, evidenziando i limiti di copertura del dataset.",
+          "Analysis of 7,438 aviation accidents in the United States, with Python data cleaning and a Power BI dashboard. Explores flight categories, severity and geographic distribution, highlighting gaps in dataset coverage."
         ),
-        tags: ["Python", "Power BI", "DAX", "Pandas"],
+        tags: ["Python", "Pandas", "Power BI", "DAX"],
         color: "#6C63FF",
         link: "https://github.com/Federico-Ordonselli/ntsb-aviation-safety-analysis",
       },
       {
         title: "Customer Churn Analysis",
         desc: tr(
-          "Analisi dell’abbandono dei clienti nel settore delle telecomunicazioni, con modelli di classificazione in Python e una dashboard Tableau per esplorare i risultati.",
-          "Analysis of customer churn in telecommunications, with Python classification models and a Tableau dashboard to explore the results."
+          "Analisi di 7.043 clienti del dataset IBM Telco: pulizia dei dati in Python e dashboard Tableau su abbandono, contratti, anzianità dei clienti e metodi di pagamento.",
+          "Analysis of 7,043 customers from the IBM Telco dataset: Python data cleaning and a Tableau dashboard covering churn, contracts, customer tenure and payment methods."
         ),
-        tags: ["Python", "Tableau", "Pandas", "Scikit-learn"],
+        tags: ["Python", "Pandas", "Tableau"],
         color: "#FF6584",
         link: "https://github.com/Federico-Ordonselli/telco-churn-analysis",
       },
       {
         title: "Azure Data Pipeline",
         desc: tr(
-          "Pipeline ETL per i dati e-commerce di Olist: archiviazione su Azure Data Lake, elaborazione in Azure SQL e visualizzazione in Power BI.",
-          "An ETL pipeline for Olist e-commerce data, with storage in Azure Data Lake, processing in Azure SQL and reporting in Power BI."
+          "Pipeline ETL in Python per leggere CSV da Azure Data Lake, normalizzare le colonne e caricare i dati in Azure SQL. Il repository include la configurazione dell’infrastruttura con Terraform.",
+          "A Python ETL pipeline that reads CSV files from Azure Data Lake, normalises columns and loads data into Azure SQL. The repository includes Terraform infrastructure configuration."
         ),
-        tags: ["Azure", "SQL", "Power BI", "ETL"],
+        tags: ["Python", "Pandas", "Azure SQL", "ADLS Gen2", "Terraform"],
         color: "#43B89C",
         link: "#",
       },
       {
         title: "SQL Northwind Analysis",
         desc: tr(
-          "Analisi del database Northwind con SQL: fatturato per categoria, principali clienti, vendite mensili e risultati per dipendente.",
-          "SQL analysis of the Northwind database: revenue by category, leading customers, monthly sales and results by employee."
+          "Query SQL sul database Northwind per analizzare fatturato, clienti, vendite per dipendente e livelli di scorta. Uno script Python genera grafici e un report CSV dei risultati.",
+          "SQL queries on the Northwind database to analyse revenue, customers, sales by employee and stock levels. A Python script generates charts and a CSV report of the results."
         ),
-        tags: ["SQL", "SQLite", "Python", "Pandas"],
+        tags: ["SQL", "SQLite", "Python", "Pandas", "Matplotlib"],
         color: "#F7971E",
         link: "https://github.com/Federico-Ordonselli/sql-northwind-analysis",
       },
       {
         title: "E-commerce Sales Analysis",
         desc: tr(
-          "Analisi di oltre 541.000 transazioni per esaminare il fatturato, i prodotti più venduti e la distribuzione degli ordini per orario e paese.",
-          "Analysis of over 541,000 transactions to examine revenue, best-selling products and the distribution of orders by time of day and country."
+          "Analisi delle vendite del dataset Online Retail con Python: pulizia dei dati, fatturato mensile, prodotti principali e ordini per orario e paese. I risultati sono raccolti in grafici e riepiloghi.",
+          "Python analysis of the Online Retail sales dataset: data cleaning, monthly revenue, leading products and orders by time of day and country. Results are presented as charts and summaries."
         ),
         tags: ["Python", "Pandas", "Matplotlib", "Seaborn"],
         color: "#6C63FF",
@@ -86,30 +86,30 @@ const RAW = {
       {
         title: "Trekking Marti",
         desc: tr(
-          "Sito bilingue per prenotare escursioni e viaggi guidati, con pagamenti Stripe e un catalogo gestibile dall’organizzatrice. Include pagamenti in due fasi per i viaggi di più giorni e controlli per evitare prenotazioni oltre i posti disponibili.",
-          "A bilingual booking site for guided hikes and trips, with Stripe payments and a catalogue managed by the organiser. Includes two-stage payments for multi-day trips and controls to prevent overbooking."
+          "Sito bilingue per escursioni e viaggi guidati, con catalogo e blog gestiti tramite Sanity. Le prenotazioni usano Stripe, con pagamento completo o acconto e saldo, e PostgreSQL per gestire posti e pagamenti.",
+          "A bilingual site for guided hikes and trips, with a catalogue and blog managed through Sanity. Bookings use Stripe for full payments or deposits and balances, with PostgreSQL managing capacity and payments."
         ),
-        tags: ["Next.js 16", "TypeScript", "Stripe", "PostgreSQL", "Sanity"],
+        tags: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Sanity"],
         color: "#6C63FF",
         link: "#",
       },
       {
         title: "Runebog GM",
         desc: tr(
-          "Applicazione per gestire sessioni di giochi di ruolo, con mappe di città e dungeon, 331 schede mostro SRD 5.2.1 in italiano e un generatore procedurale. I giocatori possono consultare una vista condivisa in sola lettura.",
-          "An app for running tabletop RPG sessions, with city and dungeon maps, 331 Italian SRD 5.2.1 monster stat blocks and a procedural generator. Players can follow along through a shared read-only view."
+          "Applicazione per organizzare campagne di giochi di ruolo: mappe navigabili, schede mostro D&D, generazione di dungeon e gestione degli incontri. Include salvataggio cloud e una vista del tavolo condivisibile con i giocatori.",
+          "An app for organising tabletop RPG campaigns: navigable maps, D&D monster stat blocks, dungeon generation and encounter management. Includes cloud saves and a table view that can be shared with players."
         ),
-        tags: ["Next.js 15", "React 19", "TypeScript", "PostgreSQL", "PWA"],
+        tags: ["Next.js", "JavaScript", "TypeScript", "PostgreSQL", "Auth.js"],
         color: "#43B89C",
         link: "https://runebog.app",
       },
       {
         title: "qrinventory",
         desc: tr(
-          "Gestione dell’inventario con etichette QR e documenti PDF. Sviluppato con FastAPI e SQLModel, con autenticazione JWT/OAuth2 e deploy su Railway.",
-          "An inventory system with QR labels and PDF documents. Built with FastAPI and SQLModel, with JWT/OAuth2 authentication and deployment on Railway."
+          "API per gestire oggetti e posizioni di un inventario, con codici QR e fogli di etichette PDF. Backend FastAPI e SQLModel, con Docker, test automatici e configurazione del deploy su Azure tramite Terraform e GitHub Actions.",
+          "An API for managing inventory items and locations, with QR codes and printable PDF label sheets. Built with FastAPI and SQLModel, with Docker, automated tests and Azure deployment configuration using Terraform and GitHub Actions."
         ),
-        tags: ["FastAPI", "SQLModel", "QR", "Docker"],
+        tags: ["FastAPI", "SQLModel", "Docker", "Azure", "Terraform"],
         color: "#6C63FF",
         link: "#",
       },
@@ -128,10 +128,10 @@ const RAW = {
       {
         title: "StudyBuddy",
         desc: tr(
-          "Assistente per consultare documenti e trascrizioni video tramite una pipeline RAG locale. Usa Ollama e ChromaDB per la ricerca nei contenuti e Groq Whisper per la trascrizione.",
-          "An assistant for querying documents and video transcripts through a local RAG pipeline. Uses Ollama and ChromaDB for content retrieval and Groq Whisper for transcription."
+          "Assistente di studio locale che trasforma documenti, audio e video in riassunti, flashcard e quiz. Permette di fare domande sui materiali con riferimenti alle fonti e di ripassare con ripetizione dilazionata.",
+          "A local study assistant that turns documents, audio and video into summaries, flashcards and quizzes. Supports questions about the material with source references, plus spaced repetition for review."
         ),
-        tags: ["Python", "Docker", "ChromaDB", "Ollama", "RAG"],
+        tags: ["Python", "Streamlit", "Ollama", "ChromaDB", "Whisper"],
         color: "#F7971E",
         link: "https://github.com/Federico-Ordonselli/studybuddy",
       },
@@ -158,10 +158,10 @@ const RAW = {
       {
         title: "Security Log Analysis",
         desc: tr(
-          "Analisi di log SSH con Python per individuare tentativi di accesso ripetuti e indirizzi IP sospetti, con aggregazioni e grafici dei risultati.",
-          "Python analysis of SSH logs to identify repeated login attempts and suspicious IP addresses, with summaries and charts of the results."
+          "Progetto di analisi di eventi SSH simulati: individua sequenze di accessi falliti e indirizzi IP sospetti, con grafici per orario e giorno. Realizzato in Python con Pandas, Matplotlib e Seaborn.",
+          "An analysis project using simulated SSH events to identify repeated failed logins and suspicious IP addresses, with charts by hour and day. Built with Python, Pandas, Matplotlib and Seaborn."
         ),
-        tags: ["Python", "Pandas", "Security", "Log Analysis"],
+        tags: ["Python", "Pandas", "Matplotlib", "Security"],
         color: "#FF6584",
         link: "https://github.com/Federico-Ordonselli/security-log-analysis",
       },
