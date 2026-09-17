@@ -18,10 +18,10 @@ function resolve(node, lang) {
 // ─── DATI ────────────────────────────────────────────────────────────────────
 const RAW = {
   name: "Federico",
-  role: tr("Sviluppatore full-stack junior", "Junior full-stack developer"),
+  role: tr("Sviluppatore frontend junior", "Junior frontend developer"),
   tagline: tr(
-          "Sviluppo applicazioni web con React e Next.js. Mi interessano la sicurezza informatica, l’elettronica e la stampa 3D.",
-          "I develop web applications with React and Next.js. My interests include cybersecurity, electronics and 3D printing."
+          "Sviluppo applicazioni web con React, TypeScript e Next.js. Mi piace creare strumenti che mi servono; nel tempo libero suono e gioco ai videogiochi.",
+          "I develop web applications with React, TypeScript and Next.js. I enjoy building tools I need; in my free time, I play music and video games."
         ),
   location: tr("Roma, Italia", "Rome, Italy"),
   email: "fede.ordons@gmail.com",
@@ -84,16 +84,6 @@ const RAW = {
     ],
     web: [
       {
-        title: "Trekking Marti",
-        desc: tr(
-          "Sito bilingue per escursioni e viaggi guidati, con catalogo e blog gestiti tramite Sanity. Le prenotazioni usano Stripe, con pagamento completo o acconto e saldo, e PostgreSQL per gestire posti e pagamenti.",
-          "A bilingual site for guided hikes and trips, with a catalogue and blog managed through Sanity. Bookings use Stripe for full payments or deposits and balances, with PostgreSQL managing capacity and payments."
-        ),
-        tags: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Sanity"],
-        color: "#6C63FF",
-        link: "#",
-      },
-      {
         title: "Runebog GM",
         desc: tr(
           "Applicazione per organizzare campagne di giochi di ruolo: mappe navigabili, schede mostro D&D, generazione di dungeon e gestione degli incontri. Include salvataggio cloud e una vista del tavolo condivisibile con i giocatori.",
@@ -102,6 +92,26 @@ const RAW = {
         tags: ["Next.js", "JavaScript", "TypeScript", "PostgreSQL", "Auth.js"],
         color: "#43B89C",
         link: "https://runebog.app",
+      },
+      {
+        title: "Matchday",
+        desc: tr(
+          "Piattaforma di scommesse sportive simulate con dati calcistici reali: frontend React, API Express e back-office Angular. Include test con Vitest e React Testing Library e una pipeline GitLab CI per i controlli automatici.",
+          "A simulated sports betting platform using real football data, with a React frontend, Express API and Angular back-office. Includes Vitest and React Testing Library tests and a GitLab CI pipeline for automated checks."
+        ),
+        tags: ["React", "TypeScript", "Express", "PostgreSQL", "GitLab CI"],
+        color: "#6C63FF",
+        link: "https://gitlab.com/Federico-Ordonselli/matchday",
+      },
+      {
+        title: "Trekking Marti",
+        desc: tr(
+          "Sito bilingue per escursioni e viaggi guidati, con catalogo e blog gestiti tramite Sanity. Le prenotazioni usano Stripe, con pagamento completo o acconto e saldo, e PostgreSQL per gestire posti e pagamenti.",
+          "A bilingual site for guided hikes and trips, with a catalogue and blog managed through Sanity. Bookings use Stripe for full payments or deposits and balances, with PostgreSQL managing capacity and payments."
+        ),
+        tags: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Sanity"],
+        color: "#6C63FF",
+        link: "#",
       },
       {
         title: "qrinventory",
@@ -116,10 +126,10 @@ const RAW = {
       {
         title: "Learning Vault",
         desc: tr(
-          "Applicazione personale per raccogliere e organizzare appunti su videogiochi, chitarra e analisi dei dati. Realizzata con Next.js, TypeScript e SQLite.",
-          "A personal app for collecting and organising notes on video games, guitar and data analysis. Built with Next.js, TypeScript and SQLite."
+          "Applicazione self-hosted che trasforma video e documenti in materiale di studio. Usa yt-dlp e Whisper per acquisire i contenuti, modelli locali con Ollama e SQLite con Drizzle per salvarli; si avvia con Docker.",
+          "A self-hosted app that turns videos and documents into study material. Uses yt-dlp and Whisper to ingest content, local models through Ollama and SQLite with Drizzle for storage; runs with Docker."
         ),
-        tags: ["Next.js", "TypeScript", "SQLite", "Docker"],
+        tags: ["Next.js", "React", "Tailwind", "Drizzle", "Ollama", "Docker"],
         color: "#FF6584",
         link: "#",
       },
@@ -183,44 +193,43 @@ const RAW = {
       icon: "🔧",
       title: tr("Elettronica", "Electronics"),
       desc: tr(
-          "Mi piace modificare controller e lavorare a piccoli progetti di elettronica, dalla progettazione dei pezzi in CAD alla saldatura e all’assemblaggio.",
-          "I enjoy modifying controllers and working on small electronics projects, from designing parts in CAD to soldering and assembly."
+          "Mi interessano l’elettronica e le modifiche ai controller.",
+          "I’m interested in electronics and controller modifications."
         ),
-      tags: [tr("Saldatura", "Soldering"), "DIY", "Modding"],
+      tags: ["DIY", "Modding"],
       color: "#F7971E",
     },
     {
       icon: "🎮",
       title: tr("Videogiochi", "Video Games"),
       desc: tr(
-          "Gioco soprattutto a Street Fighter 6, con Cammy, e a Teamfight Tactics. Ogni tanto passo a Pokémon Champions o ad Assetto Corsa con il mio Logitech G27.",
-          "I mostly play Street Fighter 6 as Cammy and Teamfight Tactics. I also play Pokémon Champions and Assetto Corsa with my Logitech G27."
+          "Mi piace passare il tempo libero a videogiocare. Il mio gioco preferito è The Legend of Zelda: Breath of the Wild.",
+          "I enjoy playing video games in my free time. My favourite is The Legend of Zelda: Breath of the Wild."
         ),
-      tags: ["FGC", "SF6", "TFT", "Sim Racing"],
+      tags: ["Zelda", "Breath of the Wild"],
       color: "#FF6584",
     },
     {
-      icon: "🎲",
-      title: "Dungeon Master",
+      icon: "🎵",
+      title: tr("Musica", "Music"),
       desc: tr(
-          "Faccio il Dungeon Master da diversi anni. Da questo interesse sono nati alcuni dei miei progetti: un assistente per consultare i manuali di D&D e un’app per trascrivere le sessioni.",
-          "I’ve been a Dungeon Master for several years. This interest led to some of my projects, including an assistant for looking up D&D rules and an app for transcribing sessions."
+          "Nel tempo libero mi piace suonare.",
+          "I enjoy playing music in my free time."
         ),
-      tags: ["D&D", "RAG", "Worldbuilding"],
+      tags: [],
       color: "#43B89C",
     },
   ],
 
   about: {
     bio: tr(
-          "Sono Federico, uno sviluppatore full-stack junior di Roma. Sviluppo applicazioni con React e Next.js, tra cui una piattaforma per prenotare e pagare escursioni guidate. Prima di dedicarmi allo sviluppo web ho lavorato per due anni nella sicurezza operativa all’aeroporto di Fiumicino, con ICTS. Ho conseguito le certificazioni CompTIA Security+ e CySA+ e continuo a studiare sicurezza informatica e sviluppo software.",
-          "I’m Federico, a junior full-stack developer based in Rome. I develop applications with React and Next.js, including a platform for booking and paying for guided hikes. Before moving into web development, I spent two years working in operational security at Fiumicino Airport with ICTS. I hold CompTIA Security+ and CySA+ certifications and continue to study cybersecurity and software development."
+          "Sono Federico, uno sviluppatore frontend junior di Roma. Lavoro con React, TypeScript e Next.js. Ho iniziato a programmare perché mi piace creare strumenti che mi servono: il primo tentativo è stato StudyBuddy, per generare flashcard e riassunti con modelli AI locali. Runebog è il progetto di cui oggi ho più voglia di parlare. Prima dello sviluppo ho lavorato nella sicurezza aeroportuale con ICTS a Fiumicino, dal 2023 al 2025: di quell’esperienza mi porto dietro l’attenzione ai dettagli. Ho conseguito le certificazioni CompTIA Security+ e CySA+.",
+          "I’m Federico, a junior frontend developer based in Rome. I work with React, TypeScript and Next.js. I started programming because I enjoy building tools I need: my first attempt was StudyBuddy, for generating flashcards and summaries with local AI models. Runebog is the project I’m most keen to talk about today. Before moving into development, I worked in airport security with ICTS at Fiumicino from 2023 to 2025. Attention to detail is something I’ve carried with me from that experience. I hold CompTIA Security+ and CySA+ certifications."
         ),
     facts: [
-      { label: tr("Videogioco preferito", "Favorite video game"), value: tr("Street Fighter 6 — main Cammy", "Street Fighter 6 — Cammy main"), icon: "🕹️" },
-      { label: tr("Musica", "Music"), value: tr("Produzione musicale con plugin VST", "Music production with VST plugins"), icon: "🎹" },
-      { label: tr("Progetti manuali", "Hands-on projects"), value: tr("Stampa 3D e saldatura", "3D printing and soldering"), icon: "🖨️" },
-      { label: tr("Giochi di ruolo", "Tabletop RPGs"), value: tr("Dungeon Master in D&D", "D&D Dungeon Master"), icon: "🐉" },
+      { label: tr("Videogioco preferito", "Favorite video game"), value: "The Legend of Zelda: Breath of the Wild", icon: "🕹️" },
+      { label: tr("Musica", "Music"), value: tr("Mi piace suonare", "I enjoy playing music"), icon: "🎹" },
+      { label: tr("Progetti manuali", "Hands-on projects"), value: tr("Stampa 3D", "3D printing"), icon: "🖨️" },
       { label: "Setup", value: "Ryzen 7 9700X · RTX 4080 Super · CachyOS", icon: "💻" },
       { label: tr("Città", "City"), value: tr("Roma, Italia", "Rome, Italy"), icon: "🏛️" },
     ],
@@ -239,12 +248,12 @@ const RAW = {
       {
         label: tr("Linguaggi e frontend", "Languages & frontend"),
         color: "#6C63FF",
-        items: ["TypeScript", "JavaScript", "React", "Next.js", "HTML", "CSS", "Tailwind CSS", "Python"],
+        items: ["TypeScript", "JavaScript", "React", "Next.js", "HTML", "CSS", "CSS Modules", "Tailwind CSS", "Python"],
       },
       {
         label: tr("Backend e dati", "Backend & data"),
         color: "#43B89C",
-        items: ["Node.js", "Express", "FastAPI", "PostgreSQL", "Drizzle ORM", "SQLite", "REST API"],
+        items: ["Node.js", "Express", "FastAPI", "PostgreSQL", "Drizzle ORM", "SQLite", "REST API", "Zod"],
       },
       {
         label: tr("Servizi e infrastruttura", "Services & infrastructure"),
@@ -254,12 +263,12 @@ const RAW = {
       {
         label: tr("Sistemi e workflow", "Systems & workflow"),
         color: "#FF6584",
-        items: ["Arch Linux", "Bash/CLI", "Docker", "GitHub Actions", tr("Modelli AI locali", "Local AI models")],
+        items: ["Arch Linux", "Bash/CLI", "Docker", "Docker Compose", "Git", "Gitflow", "GitLab CI", "GitHub Actions", "npm", "pnpm", tr("Modelli AI locali", "Local AI models")],
       },
       {
         label: tr("Qualità e sicurezza", "Quality & security"),
         color: "#6C63FF",
-        items: ["Vitest", "node:test", "CI/CD", tr("Accessibilità WCAG", "WCAG accessibility"), "OAuth", "XSS prevention"],
+        items: ["Vitest", "React Testing Library", "Jest", "node:test", "CI/CD", tr("Accessibilità WCAG di base", "WCAG accessibility basics"), "OAuth", "XSS prevention"],
       },
     ],
   },
