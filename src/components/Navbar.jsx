@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { getContent, LANGS } from "../data/content.js";
 
-const NAV_HEIGHT = 60;
+const NAV_HEIGHT = 76;
 
 function Navbar({ page, setPage, lang, setLang }) {
   const { nav } = getContent(lang).ui;
@@ -14,14 +14,14 @@ function Navbar({ page, setPage, lang, setLang }) {
   ];
 
   const [isMobile, setIsMobile] = useState(
-    () => typeof window !== "undefined" && window.innerWidth <= 640
+    () => typeof window !== "undefined" && window.innerWidth <= 800
   );
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef(null);
 
   useEffect(() => {
     const onResize = () => {
-      const mobile = window.innerWidth <= 640;
+      const mobile = window.innerWidth <= 800;
       setIsMobile(mobile);
       if (!mobile) setMenuOpen(false); // close menu when switching to desktop
     };
@@ -52,7 +52,7 @@ function Navbar({ page, setPage, lang, setLang }) {
   const langToggle = (
     <div style={{
       display: "flex",
-      border: "1px solid #2a2a4a",
+      border: "1px solid #303a34",
       borderRadius: 8,
       overflow: "hidden",
     }}>
@@ -61,9 +61,10 @@ function Navbar({ page, setPage, lang, setLang }) {
           key={l}
           onClick={() => setLang(l)}
           aria-label={`Switch to ${l.toUpperCase()}`}
+          aria-pressed={lang === l}
           style={{
-            background: lang === l ? "#6C63FF" : "transparent",
-            color: lang === l ? "#fff" : "#7a7ab0",
+            background: lang === l ? "#bdd1b8" : "transparent",
+            color: lang === l ? "#121615" : "#9ca99e",
             border: "none",
             padding: "6px 10px",
             fontSize: 12,
@@ -80,44 +81,42 @@ function Navbar({ page, setPage, lang, setLang }) {
   );
 
   return (
-    <nav ref={navRef} style={{
+    <nav className="navbar" ref={navRef} style={{
       position: "sticky",
       top: 0,
       zIndex: 100,
-      background: "#0d0d1acc",
+      background: "#121615cc",
       backdropFilter: "blur(20px)",
-      borderBottom: "1px solid #1e1e3e",
-      padding: "0 24px",
+      borderBottom: "1px solid #2c3530",
+      padding: "0 max(24px, calc((100vw - 1100px) / 2))",
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
       height: NAV_HEIGHT,
     }}>
-      <span
+      <button className="brand"
         onClick={() => goTo("home")}
         style={{
           fontWeight: 900,
           fontSize: 18,
           cursor: "pointer",
-          background: "linear-gradient(135deg, #6C63FF, #FF6584)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
+          background: "none", color: "var(--text)", border: 0, padding: 0, letterSpacing: -0.6,
         }}
       >
-        ordonselli.info
-      </span>
+        ordonselli<span style={{ color: "var(--accent)", fontWeight: 400 }}>.info</span>
+      </button>
 
       {!isMobile && (
         <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
           {navItems.filter(n => n.id !== "home").map((item) => (
             <button
               key={item.id}
+              aria-current={page === item.id ? "page" : undefined}
               onClick={() => setPage(item.id)}
               style={{
-                background: page === item.id ? "#6C63FF22" : "transparent",
-                color: page === item.id ? "#a09aff" : "#9090b0",
-                border: page === item.id ? "1px solid #6C63FF44" : "1px solid transparent",
+                background: page === item.id ? "#bdd1b822" : "transparent",
+                color: page === item.id ? "#bdd1b8" : "#a8b3a9",
+                border: page === item.id ? "1px solid #bdd1b844" : "1px solid transparent",
                 borderRadius: 8,
                 padding: "6px 16px",
                 fontSize: 14,
@@ -140,7 +139,7 @@ function Navbar({ page, setPage, lang, setLang }) {
           aria-expanded={menuOpen}
           style={{
             background: "transparent",
-            border: "1px solid #2a2a4a",
+            border: "1px solid #303a34",
             borderRadius: 8,
             width: 40,
             height: 40,
@@ -161,7 +160,7 @@ function Navbar({ page, setPage, lang, setLang }) {
                 width: 18,
                 height: 2,
                 borderRadius: 2,
-                background: "#9090b0",
+                background: "#a8b3a9",
                 transition: "transform 0.25s, opacity 0.2s",
                 transform:
                   menuOpen && i === 0 ? "translateY(6px) rotate(45deg)"
@@ -181,9 +180,9 @@ function Navbar({ page, setPage, lang, setLang }) {
           top: NAV_HEIGHT,
           left: 0,
           right: 0,
-          background: "#0d0d1af2",
+          background: "#121615f2",
           backdropFilter: "blur(20px)",
-          borderBottom: "1px solid #1e1e3e",
+          borderBottom: "1px solid #2c3530",
           padding: "12px 24px 20px",
           display: "flex",
           flexDirection: "column",
@@ -193,11 +192,12 @@ function Navbar({ page, setPage, lang, setLang }) {
           {navItems.map((item) => (
             <button
               key={item.id}
+              aria-current={page === item.id ? "page" : undefined}
               onClick={() => goTo(item.id)}
               style={{
-                background: page === item.id ? "#6C63FF22" : "transparent",
-                color: page === item.id ? "#a09aff" : "#9090b0",
-                border: page === item.id ? "1px solid #6C63FF44" : "1px solid transparent",
+                background: page === item.id ? "#bdd1b822" : "transparent",
+                color: page === item.id ? "#bdd1b8" : "#a8b3a9",
+                border: page === item.id ? "1px solid #bdd1b844" : "1px solid transparent",
                 borderRadius: 8,
                 padding: "12px 16px",
                 fontSize: 15,

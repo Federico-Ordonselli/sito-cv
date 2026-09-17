@@ -11,24 +11,24 @@ function ProjectsPage({ lang }) {
       <SectionHeader
         title={t.title}
         subtitle={t.subtitle}
-        accent="#6C63FF"
+        accent="#bdd1b8"
       />
 
       {/* Ordine: il web development apre la pagina, la data analysis chiude.
           Riflette il posizionamento del CV, non la cronologia dei progetti. */}
-      <SubSection title={t.web} color="#6C63FF">
+      <SubSection title={t.web} color="#bdd1b8">
         {DATA.projects.web.map((p, i) => (
           <Card key={p.title} {...p} delay={i * 80} />
         ))}
       </SubSection>
 
-      <SubSection title={t.cyber} color="#43B89C">
+      <SubSection title={t.cyber} color="#bdd1b8">
         {DATA.projects.cyber.map((p, i) => (
           <Card key={p.title} {...p} delay={i * 80} />
         ))}
       </SubSection>
 
-      <SubSection title={t.data} color="#F7971E">
+      <SubSection title={t.data} color="#bdd1b8">
         {DATA.projects.data.map((p, i) => (
           <Card key={p.title} {...p} delay={i * 80} />
         ))}

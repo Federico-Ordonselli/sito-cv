@@ -1,10 +1,10 @@
-function SubSection({ title, color, children }) {
+function SubSection({ title, children }) {
   return (
     <div style={{ marginBottom: 56 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 28 }}>
-        <div style={{ width: 8, height: 8, borderRadius: "50%", background: color }} />
-        <h3 style={{ margin: 0, fontSize: 20, fontWeight: 700, color: "#c0c0d8" }}>{title}</h3>
-        <div style={{ flex: 1, height: 1, background: "#2a2a3e" }} />
+        <div style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--accent)" }} />
+        <h3 style={{ margin: 0, fontSize: 20, fontWeight: 700, color: "#d1d8cf" }}>{title}</h3>
+        <div style={{ flex: 1, height: 1, background: "#303a34" }} />
       </div>
       <div style={{
         display: "grid",

@@ -10,7 +10,7 @@ function HobbiesPage({ lang }) {
       <SectionHeader
         title={t.title}
         subtitle={t.subtitle}
-        accent="#FF6584"
+        accent="#bdd1b8"
       />
       <div style={{
         display: "grid",

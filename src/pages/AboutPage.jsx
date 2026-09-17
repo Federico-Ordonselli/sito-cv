@@ -2,7 +2,6 @@ import { useState } from "react";
 import { getContent } from "../data/content.js";
 import SectionHeader from "../components/SectionHeader.jsx";
 import Tag from "../components/Tag.jsx";
-import { lighten } from "../lib/color.js";
 
 // Ordine della pagina: bio → competenze → certificazioni → fatti personali.
 // Le credenziali tecniche stanno sopra la piega, il colore personale sotto.
@@ -12,7 +11,7 @@ function AboutPage({ lang }) {
   const t = DATA.ui.aboutPage;
 
   const heading = {
-    color: "#9090b0",
+    color: "#a8b3a9",
     fontSize: 14,
     fontWeight: 700,
     letterSpacing: 1.5,
@@ -25,19 +24,19 @@ function AboutPage({ lang }) {
       <SectionHeader
         title={t.title}
         subtitle={t.subtitle}
-        accent="#F7971E"
+        accent="#bdd1b8"
       />
 
       {/* Bio — stesso trattamento dell'accento delle card: bordo tinto e alone
           d'angolo, non la banda colorata sul lato sinistro. */}
       <div style={{
-        background: "radial-gradient(130% 90% at 100% 0%, #F7971E16, transparent 55%), #161622",
-        border: "1px solid #F7971E33",
+        background: "var(--surface)",
+        border: "1px solid var(--border)",
         borderRadius: 16,
         padding: "28px 32px",
         marginBottom: 40,
       }}>
-        <p style={{ margin: 0, color: "#b0b0cc", fontSize: 16, lineHeight: 1.8, textWrap: "pretty" }}>
+        <p style={{ margin: 0, color: "#b5bfb5", fontSize: 16, lineHeight: 1.8, textWrap: "pretty" }}>
           {DATA.about.bio}
         </p>
       </div>
@@ -49,8 +48,8 @@ function AboutPage({ lang }) {
           {DATA.about.skills.map((group, i) => (
             <div key={group.label} style={{ animation: `fadeUp 0.4s ease ${i * 60}ms both` }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
-                <div style={{ width: 6, height: 6, borderRadius: "50%", background: group.color }} />
-                <span style={{ color: "#c0c0d8", fontSize: 13, fontWeight: 700, letterSpacing: 0.5 }}>
+                <div style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--accent)" }} />
+                <span style={{ color: "#d1d8cf", fontSize: 13, fontWeight: 700, letterSpacing: 0.5 }}>
                   {group.label}
                 </span>
               </div>
@@ -70,11 +69,11 @@ function AboutPage({ lang }) {
         <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
           {DATA.about.certs.map((c) => (
             <div key={c.name} style={{
-              background: c.color + "22",
-              border: `1px solid ${c.color}44`,
+              background: "var(--surface)",
+              border: "1px solid var(--border)",
               borderRadius: 10,
               padding: "10px 18px",
-              color: lighten(c.color, 0.3),
+              color: "var(--text)",
               fontWeight: 700,
               fontSize: 14,
             }}>
@@ -93,8 +92,8 @@ function AboutPage({ lang }) {
       }}>
         {DATA.about.facts.map((f, i) => (
           <div key={f.label} style={{
-            background: "#161622",
-            border: "1px solid #2a2a3e",
+            background: "#1a1f1d",
+            border: "1px solid #303a34",
             borderRadius: 12,
             padding: "18px 20px",
             display: "flex",
@@ -104,10 +103,10 @@ function AboutPage({ lang }) {
           }}>
             <span style={{ fontSize: 24 }}>{f.icon}</span>
             <div>
-              <div style={{ color: "#7a7ab0", fontSize: 11, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", marginBottom: 4 }}>
+              <div style={{ color: "#9ca99e", fontSize: 11, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", marginBottom: 4 }}>
                 {f.label}
               </div>
-              <div style={{ color: "#d0d0e8", fontSize: 15, fontWeight: 600 }}>
+              <div style={{ color: "#d1d8cf", fontSize: 15, fontWeight: 600 }}>
                 {f.value}
               </div>
             </div>
@@ -121,16 +120,16 @@ function AboutPage({ lang }) {
         <div style={{
           borderRadius: 16,
           overflow: "hidden",
-          border: "1px solid #2a2a3e",
+          border: "1px solid #303a34",
         }}>
           {!spotifyVisible ? (
             <button
               onClick={() => setSpotifyVisible(true)}
               style={{
                 width: "100%",
-                background: "#161622",
+                background: "#1a1f1d",
                 border: "none",
-                color: "#1DB954",
+                color: "#bdd1b8",
                 padding: "32px",
                 fontSize: 16,
                 fontWeight: 700,

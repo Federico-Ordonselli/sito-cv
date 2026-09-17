@@ -18,11 +18,11 @@ function resolve(node, lang) {
 // ─── DATI ────────────────────────────────────────────────────────────────────
 const RAW = {
   name: "Federico",
-  role: "Junior Full-Stack Developer · Security · Builder",
+  role: tr("Sviluppatore full-stack junior", "Junior full-stack developer"),
   tagline: tr(
-    "Sviluppo applicazioni web in React e Next.js, dal database al checkout. Costruisco cose, digitali e fisiche.",
-    "I build web applications in React and Next.js, from the database to the checkout. I build things — digital and physical."
-  ),
+          "Sviluppo applicazioni web con React e Next.js. Mi interessano la sicurezza informatica, l’elettronica e la stampa 3D.",
+          "I develop web applications with React and Next.js. My interests include cybersecurity, electronics and 3D printing."
+        ),
   location: tr("Roma, Italia", "Rome, Italy"),
   email: "fede.ordons@gmail.com",
   github: "https://github.com/Federico-Ordonselli",
@@ -34,8 +34,8 @@ const RAW = {
       {
         title: "NTSB Aviation Safety Analysis",
         desc: tr(
-          "Analisi su dataset incidenti aviazione NTSB con Python, Power BI e DAX. Identificazione di pattern stagionali e correlazioni tra condizioni meteo e incidenti.",
-          "Analysis of the NTSB aviation accident dataset with Python, Power BI and DAX. Identified seasonal patterns and correlations between weather conditions and accidents."
+          "Analisi dei dati NTSB sugli incidenti aerei, con Python e Power BI, per studiare gli andamenti stagionali e le relazioni tra meteo e incidenti.",
+          "Analysis of NTSB aviation accident data using Python and Power BI to study seasonal patterns and the relationship between weather and accidents."
         ),
         tags: ["Python", "Power BI", "DAX", "Pandas"],
         color: "#6C63FF",
@@ -44,8 +44,8 @@ const RAW = {
       {
         title: "Customer Churn Analysis",
         desc: tr(
-          "Previsione abbandono clienti Telco con feature engineering, modelli di classificazione e dashboard Tableau interattiva per il team marketing.",
-          "Telco customer churn prediction with feature engineering, classification models and an interactive Tableau dashboard for the marketing team."
+          "Analisi dell’abbandono dei clienti nel settore delle telecomunicazioni, con modelli di classificazione in Python e una dashboard Tableau per esplorare i risultati.",
+          "Analysis of customer churn in telecommunications, with Python classification models and a Tableau dashboard to explore the results."
         ),
         tags: ["Python", "Tableau", "Pandas", "Scikit-learn"],
         color: "#FF6584",
@@ -54,8 +54,8 @@ const RAW = {
       {
         title: "Azure Data Pipeline",
         desc: tr(
-          "Pipeline ETL su ADLS Gen2 + Azure SQL Database con dataset Olist Brazilian E-Commerce. Visualizzazione finale in Power BI Desktop.",
-          "ETL pipeline on ADLS Gen2 + Azure SQL Database using the Olist Brazilian E-Commerce dataset. Final visualization in Power BI Desktop."
+          "Pipeline ETL per i dati e-commerce di Olist: archiviazione su Azure Data Lake, elaborazione in Azure SQL e visualizzazione in Power BI.",
+          "An ETL pipeline for Olist e-commerce data, with storage in Azure Data Lake, processing in Azure SQL and reporting in Power BI."
         ),
         tags: ["Azure", "SQL", "Power BI", "ETL"],
         color: "#43B89C",
@@ -64,8 +64,8 @@ const RAW = {
       {
         title: "SQL Northwind Analysis",
         desc: tr(
-          "Query SQL avanzate sul database relazionale Northwind per estrarre insight di business: revenue per categoria, top clienti, trend mensili e performance dei dipendenti.",
-          "Advanced SQL queries on the Northwind relational database to extract business insights: revenue by category, top customers, monthly trends and employee performance."
+          "Analisi del database Northwind con SQL: fatturato per categoria, principali clienti, vendite mensili e risultati per dipendente.",
+          "SQL analysis of the Northwind database: revenue by category, leading customers, monthly sales and results by employee."
         ),
         tags: ["SQL", "SQLite", "Python", "Pandas"],
         color: "#F7971E",
@@ -74,8 +74,8 @@ const RAW = {
       {
         title: "E-commerce Sales Analysis",
         desc: tr(
-          "Analisi esplorativa su un dataset retail reale (oltre 541.000 transazioni): trend di fatturato, prodotti top, ordini per fascia oraria e paesi per revenue.",
-          "Exploratory data analysis on a real retail dataset (541,000+ transactions): revenue trends, top products, orders by time of day and countries by revenue."
+          "Analisi di oltre 541.000 transazioni per esaminare il fatturato, i prodotti più venduti e la distribuzione degli ordini per orario e paese.",
+          "Analysis of over 541,000 transactions to examine revenue, best-selling products and the distribution of orders by time of day and country."
         ),
         tags: ["Python", "Pandas", "Matplotlib", "Seaborn"],
         color: "#6C63FF",
@@ -86,8 +86,8 @@ const RAW = {
       {
         title: "Trekking Marti",
         desc: tr(
-          "Sito di prenotazione e pagamento per un'organizzatrice di trekking guidati. Bilingue, con catalogo che la cliente gestisce da sola e checkout Stripe a due fasi per i viaggi multi-giorno. Contenuti su Sanity, denaro su Postgres: un lock per partenza contro l'overbooking, transizioni di stato idempotenti sui webhook.",
-          "A booking and payment site for a guided trekking organiser. Bilingual, with a catalogue the client manages herself and a two-phase Stripe checkout for multi-day trips. Content lives in Sanity, money in Postgres: a per-departure lock against overbooking, idempotent state transitions on every webhook."
+          "Sito bilingue per prenotare escursioni e viaggi guidati, con pagamenti Stripe e un catalogo gestibile dall’organizzatrice. Include pagamenti in due fasi per i viaggi di più giorni e controlli per evitare prenotazioni oltre i posti disponibili.",
+          "A bilingual booking site for guided hikes and trips, with Stripe payments and a catalogue managed by the organiser. Includes two-stage payments for multi-day trips and controls to prevent overbooking."
         ),
         tags: ["Next.js 16", "TypeScript", "Stripe", "PostgreSQL", "Sanity"],
         color: "#6C63FF",
@@ -96,8 +96,8 @@ const RAW = {
       {
         title: "Runebog GM",
         desc: tr(
-          "Applicazione web per Game Master di giochi di ruolo: mappe annidabili di città e dungeon, 331 schede mostro SRD 5.2.1 in italiano, generatore procedurale e tavolo in sola lettura per i giocatori. Next.js 15 su Postgres, editor JavaScript vanilla senza build.",
-          "A web app for tabletop RPG Game Masters: nested maps of cities and dungeons, 331 Italian D&D 5e SRD stat blocks, a procedural generator and a read-only table for players. Next.js 15 on Postgres, vanilla JavaScript editor with no build step."
+          "Applicazione per gestire sessioni di giochi di ruolo, con mappe di città e dungeon, 331 schede mostro SRD 5.2.1 in italiano e un generatore procedurale. I giocatori possono consultare una vista condivisa in sola lettura.",
+          "An app for running tabletop RPG sessions, with city and dungeon maps, 331 Italian SRD 5.2.1 monster stat blocks and a procedural generator. Players can follow along through a shared read-only view."
         ),
         tags: ["Next.js 15", "React 19", "TypeScript", "PostgreSQL", "PWA"],
         color: "#43B89C",
@@ -106,8 +106,8 @@ const RAW = {
       {
         title: "qrinventory",
         desc: tr(
-          "Sistema inventario con FastAPI + SQLModel, generazione QR code e PDF. Autenticazione JWT/OAuth2, deploy su Railway.",
-          "Inventory system with FastAPI + SQLModel, QR code and PDF generation. JWT/OAuth2 authentication, deployed on Railway."
+          "Gestione dell’inventario con etichette QR e documenti PDF. Sviluppato con FastAPI e SQLModel, con autenticazione JWT/OAuth2 e deploy su Railway.",
+          "An inventory system with QR labels and PDF documents. Built with FastAPI and SQLModel, with JWT/OAuth2 authentication and deployment on Railway."
         ),
         tags: ["FastAPI", "SQLModel", "QR", "Docker"],
         color: "#6C63FF",
@@ -116,8 +116,8 @@ const RAW = {
       {
         title: "Learning Vault",
         desc: tr(
-          "Webapp personale Next.js 16 + React 19 + TypeScript + SQLite/Drizzle + Tailwind v4 per tracciare conoscenze su SF6, TFT, chitarra e data analysis.",
-          "Personal web app — Next.js 16 + React 19 + TypeScript + SQLite/Drizzle + Tailwind v4 — to track knowledge on SF6, TFT, guitar and data analysis."
+          "Applicazione personale per raccogliere e organizzare appunti su videogiochi, chitarra e analisi dei dati. Realizzata con Next.js, TypeScript e SQLite.",
+          "A personal app for collecting and organising notes on video games, guitar and data analysis. Built with Next.js, TypeScript and SQLite."
         ),
         tags: ["Next.js", "TypeScript", "SQLite", "Docker"],
         color: "#FF6584",
@@ -128,8 +128,8 @@ const RAW = {
       {
         title: "StudyBuddy",
         desc: tr(
-          "RAG pipeline locale con Ollama, ChromaDB e Docker Compose. GPU passthrough NVIDIA e pipeline Groq Whisper per trascrivere le VOD prima di indicizzarle.",
-          "Local RAG pipeline with Ollama, ChromaDB and Docker Compose. NVIDIA GPU passthrough and a Groq Whisper pipeline that transcribes VODs before indexing them."
+          "Assistente per consultare documenti e trascrizioni video tramite una pipeline RAG locale. Usa Ollama e ChromaDB per la ricerca nei contenuti e Groq Whisper per la trascrizione.",
+          "An assistant for querying documents and video transcripts through a local RAG pipeline. Uses Ollama and ChromaDB for content retrieval and Groq Whisper for transcription."
         ),
         tags: ["Python", "Docker", "ChromaDB", "Ollama", "RAG"],
         color: "#F7971E",
@@ -138,8 +138,8 @@ const RAW = {
       {
         title: "D&D Transcription App",
         desc: tr(
-          "App trascrizione sessioni D&D con faster-whisper + pyannote.audio. Sistema dual-embedding per distinguere voce in-character da out-of-character.",
-          "D&D session transcription app with faster-whisper + pyannote.audio. Dual-embedding system to tell in-character from out-of-character speech."
+          "Trascrizione delle sessioni di D&D con faster-whisper e pyannote.audio, con riconoscimento dei parlanti e distinzione tra dialoghi dei personaggi e conversazioni dei giocatori.",
+          "D&D session transcription using faster-whisper and pyannote.audio, with speaker identification and a distinction between character dialogue and player conversation."
         ),
         tags: ["Python", "Whisper", "NLP", "Speaker Diarization"],
         color: "#F7971E",
@@ -148,8 +148,8 @@ const RAW = {
       {
         title: "Sub Tracker",
         desc: tr(
-          "Desktop app PyQt6 + SQLite per tracciamento abbonamenti. Integrata come servizio systemd su Linux.",
-          "PyQt6 + SQLite desktop app for subscription tracking. Integrated as a systemd service on Linux."
+          "Applicazione desktop per tenere traccia degli abbonamenti, realizzata con PyQt6 e SQLite e integrata con systemd su Linux.",
+          "A desktop app for tracking subscriptions, built with PyQt6 and SQLite and integrated with systemd on Linux."
         ),
         tags: ["PyQt6", "SQLite", "Linux", "systemd"],
         color: "#6C63FF",
@@ -158,8 +158,8 @@ const RAW = {
       {
         title: "Security Log Analysis",
         desc: tr(
-          "Analisi di log SSH con Python per identificare tentativi di brute-force e IP sospetti. Pulizia dati, aggregazioni e visualizzazioni.",
-          "SSH log analysis in Python to detect brute-force attempts and suspicious IPs. Data cleaning, aggregations and visualizations."
+          "Analisi di log SSH con Python per individuare tentativi di accesso ripetuti e indirizzi IP sospetti, con aggregazioni e grafici dei risultati.",
+          "Python analysis of SSH logs to identify repeated login attempts and suspicious IP addresses, with summaries and charts of the results."
         ),
         tags: ["Python", "Pandas", "Security", "Log Analysis"],
         color: "#FF6584",
@@ -171,21 +171,21 @@ const RAW = {
   hobbies: [
     {
       icon: "🖨️",
-      title: "3D Printing",
+      title: tr("Stampa 3D", "3D printing"),
       desc: tr(
-        "Bambu Lab A1 + AMS Lite. Sto costruendo un leverless hitbox controller da zero — chassis stampato, switch Gateron KS-9, OLED SH1106. Ho anche modellato una replica della Piramide Cestia in Blender.",
-        "Bambu Lab A1 + AMS Lite. I'm building a leverless hitbox controller from scratch — printed chassis, Gateron KS-9 switches, SH1106 OLED. I also modeled a replica of the Pyramid of Cestius in Blender."
-      ),
+          "Uso una Bambu Lab A1 con AMS Lite per realizzare piccoli progetti. Sto costruendo un controller leverless con scocca stampata in 3D; ho anche modellato in Blender una replica della Piramide Cestia.",
+          "I use a Bambu Lab A1 with AMS Lite for small projects. I’m building a leverless controller with a 3D-printed case, and have also modelled a replica of the Pyramid of Cestius in Blender."
+        ),
       tags: ["Bambu Lab", "Blender", "FDM", "Hitbox"],
       color: "#6C63FF",
     },
     {
       icon: "🔧",
-      title: tr("Saldatura & Hardware", "Soldering & Hardware"),
+      title: tr("Elettronica", "Electronics"),
       desc: tr(
-        "Modding controller, elettronica DIY, assemblaggio custom. Parto dall'idea, progetto in CAD, stampo, saldo, assemblo. End-to-end.",
-        "Controller modding, DIY electronics, custom builds. I start from the idea, design in CAD, print, solder, assemble. End-to-end."
-      ),
+          "Mi piace modificare controller e lavorare a piccoli progetti di elettronica, dalla progettazione dei pezzi in CAD alla saldatura e all’assemblaggio.",
+          "I enjoy modifying controllers and working on small electronics projects, from designing parts in CAD to soldering and assembly."
+        ),
       tags: [tr("Saldatura", "Soldering"), "DIY", "Modding"],
       color: "#F7971E",
     },
@@ -193,9 +193,9 @@ const RAW = {
       icon: "🎮",
       title: tr("Videogiochi", "Video Games"),
       desc: tr(
-        "Street Fighter 6 (main Cammy), Teamfight Tactics, Pokémon Champions, Assetto Corsa con Logitech G27. Simulatori di guida soprattutto la notte.",
-        "Street Fighter 6 (Cammy main), Teamfight Tactics, Pokémon Champions, Assetto Corsa with a Logitech G27. Driving sims, especially at night."
-      ),
+          "Gioco soprattutto a Street Fighter 6, con Cammy, e a Teamfight Tactics. Ogni tanto passo a Pokémon Champions o ad Assetto Corsa con il mio Logitech G27.",
+          "I mostly play Street Fighter 6 as Cammy and Teamfight Tactics. I also play Pokémon Champions and Assetto Corsa with my Logitech G27."
+        ),
       tags: ["FGC", "SF6", "TFT", "Sim Racing"],
       color: "#FF6584",
     },
@@ -203,9 +203,9 @@ const RAW = {
       icon: "🎲",
       title: "Dungeon Master",
       desc: tr(
-        "DM da anni. Ho costruito un AI DM assistant con RAG sulle core rulebook D&D e un'app di trascrizione per le sessioni. La narrativa è un'altra forma di data storytelling.",
-        "DM for years. I built an AI DM assistant with RAG over the D&D core rulebooks and a transcription app for sessions. Storytelling is just another form of data storytelling."
-      ),
+          "Faccio il Dungeon Master da diversi anni. Da questo interesse sono nati alcuni dei miei progetti: un assistente per consultare i manuali di D&D e un’app per trascrivere le sessioni.",
+          "I’ve been a Dungeon Master for several years. This interest led to some of my projects, including an assistant for looking up D&D rules and an app for transcribing sessions."
+        ),
       tags: ["D&D", "RAG", "Worldbuilding"],
       color: "#43B89C",
     },
@@ -213,14 +213,14 @@ const RAW = {
 
   about: {
     bio: tr(
-      "Sono Federico, sviluppatore full-stack a Roma. Vengo da due anni di sicurezza operativa all'aeroporto di Fiumicino (ICTS): un ambiente 24/7 dove una procedura saltata si vede subito, e dove ho imparato a lavorare per escalation e verifiche. Oggi costruisco applicazioni React e Next.js — l'ultima è una piattaforma di prenotazione e pagamento che la cliente gestisce da sola. Certificato CompTIA Security+ e CySA+: la sicurezza applicativa non è un modulo che aggiungo alla fine.",
-      "I'm Federico, a full-stack developer based in Rome. I come from two years in operational security at Fiumicino Airport (ICTS): a 24/7 environment where a skipped procedure shows immediately, and where I learned to work through escalation and verification. These days I build React and Next.js applications — the latest one is a booking and payment platform the client runs on her own. CompTIA Security+ and CySA+ certified: application security isn't a module I bolt on at the end."
-    ),
+          "Sono Federico, uno sviluppatore full-stack junior di Roma. Sviluppo applicazioni con React e Next.js, tra cui una piattaforma per prenotare e pagare escursioni guidate. Prima di dedicarmi allo sviluppo web ho lavorato per due anni nella sicurezza operativa all’aeroporto di Fiumicino, con ICTS. Ho conseguito le certificazioni CompTIA Security+ e CySA+ e continuo a studiare sicurezza informatica e sviluppo software.",
+          "I’m Federico, a junior full-stack developer based in Rome. I develop applications with React and Next.js, including a platform for booking and paying for guided hikes. Before moving into web development, I spent two years working in operational security at Fiumicino Airport with ICTS. I hold CompTIA Security+ and CySA+ certifications and continue to study cybersecurity and software development."
+        ),
     facts: [
       { label: tr("Videogioco preferito", "Favorite video game"), value: tr("Street Fighter 6 — main Cammy", "Street Fighter 6 — Cammy main"), icon: "🕹️" },
-      { label: tr("Genere musicale", "Music"), value: tr("Produzione musicale con VST plugin", "Music production with VST plugins"), icon: "🎹" },
-      { label: tr("Hobby fisico", "Hands-on hobby"), value: tr("3D printing & saldatura", "3D printing & soldering"), icon: "🖨️" },
-      { label: "TTRPG", value: tr("D&D — sempre dalla parte del DM", "D&D — always on the DM's side"), icon: "🐉" },
+      { label: tr("Musica", "Music"), value: tr("Produzione musicale con plugin VST", "Music production with VST plugins"), icon: "🎹" },
+      { label: tr("Progetti manuali", "Hands-on projects"), value: tr("Stampa 3D e saldatura", "3D printing and soldering"), icon: "🖨️" },
+      { label: tr("Giochi di ruolo", "Tabletop RPGs"), value: tr("Dungeon Master in D&D", "D&D Dungeon Master"), icon: "🐉" },
       { label: "Setup", value: "Ryzen 7 9700X · RTX 4080 Super · CachyOS", icon: "💻" },
       { label: tr("Città", "City"), value: tr("Roma, Italia", "Rome, Italy"), icon: "🏛️" },
     ],
@@ -237,7 +237,7 @@ const RAW = {
     // dei gruppi sono tradotte.
     skills: [
       {
-        label: tr("Core", "Core"),
+        label: tr("Linguaggi e frontend", "Languages & frontend"),
         color: "#6C63FF",
         items: ["TypeScript", "JavaScript", "React", "Next.js", "HTML", "CSS", "Tailwind CSS", "Python"],
       },
@@ -268,7 +268,7 @@ const RAW = {
   // Ogni cert punta a un PDF in /public/certs. Date e link estratti dai PDF.
   certifications: [
     {
-      category: "Security",
+      category: tr("Sicurezza informatica", "Cybersecurity"),
       color: "#FF6584",
       items: [
         {
@@ -288,7 +288,7 @@ const RAW = {
       ],
     },
     {
-      category: "Data Analysis",
+      category: tr("Analisi dei dati", "Data analysis"),
       color: "#6C63FF",
       items: [
         {
@@ -378,16 +378,16 @@ const RAW = {
     projectsPage: {
       subtitle: tr("Portfolio", "Portfolio"),
       title: tr("Progetti", "Projects"),
-      data: tr("Data Analysis", "Data Analysis"),
-      web: tr("Web Development", "Web Development"),
-      cyber: tr("Cybersecurity & Tools", "Cybersecurity & Tools"),
+      data: tr("Analisi dei dati", "Data analysis"),
+      web: tr("Applicazioni web", "Web applications"),
+      cyber: tr("Strumenti e sicurezza", "Tools & security"),
     },
     certsPage: {
-      subtitle: tr("Credenziali", "Credentials"),
+      subtitle: tr("Formazione", "Education"),
       title: tr("Certificazioni", "Certifications"),
       intro: tr(
-        "Clicca su una certificazione per visualizzare il PDF originale.",
-        "Click a certification to view the original PDF."
+        "Qui puoi consultare gli attestati in PDF e, dove disponibile, il link di verifica.",
+        "View the certificates as PDFs or follow the verification link where available."
       ),
       view: tr("Visualizza certificato", "View certificate"),
       verify: tr("Verifica", "Verify"),
@@ -395,16 +395,16 @@ const RAW = {
       close: tr("Chiudi", "Close"),
     },
     hobbiesPage: {
-      subtitle: tr("Beyond Code", "Beyond Code"),
-      title: tr("Hobby Tecnici", "Technical Hobbies"),
+      subtitle: tr("Tempo libero", "Outside work"),
+      title: tr("Hobby e interessi", "Hobbies & interests"),
     },
     aboutPage: {
-      subtitle: tr("About", "About"),
+      subtitle: tr("Profilo", "Profile"),
       title: tr("Chi sono", "About me"),
       skillsHeading: tr("Competenze tecniche", "Technical skills"),
       certsHeading: tr("Certificazioni", "Certifications"),
-      playlistHeading: tr("🎵 Canzone preferita", "🎵 Favourite song"),
-      loadSpotify: tr("Carica il player Spotify", "Load the Spotify player"),
+      playlistHeading: tr("Una canzone che ascolto spesso", "A song I often listen to"),
+      loadSpotify: tr("Ascolta su Spotify", "Listen on Spotify"),
     },
   },
 };

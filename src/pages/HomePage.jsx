@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { getContent } from "../data/content.js";
 
 const githubIcon = (
@@ -21,214 +20,40 @@ const mailIcon = (
 );
 
 function HomePage({ setPage, lang }) {
-  const [visible, setVisible] = useState(false);
-  useEffect(() => { setTimeout(() => setVisible(true), 100); }, []);
-
   const DATA = getContent(lang);
   const { nav } = DATA.ui;
-  const gradient = "linear-gradient(135deg, #6C63FF, #FF6584, #F7971E)";
+
 
   return (
-    <div style={{
-      minHeight: "100vh",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      textAlign: "center",
-      padding: "40px 24px",
-      position: "relative",
-      overflow: "hidden",
-    }}>
-      {/* Background orbs */}
-      <div style={{
-        position: "absolute", top: "10%", left: "5%",
-        width: 400, height: 400,
-        background: "radial-gradient(circle, #6C63FF22, transparent 70%)",
-        borderRadius: "50%", pointerEvents: "none",
-        animation: "float1 18s ease-in-out infinite",
-      }} />
-      <div style={{
-        position: "absolute", bottom: "10%", right: "5%",
-        width: 350, height: 350,
-        background: "radial-gradient(circle, #FF658422, transparent 70%)",
-        borderRadius: "50%", pointerEvents: "none",
-        animation: "float2 14s ease-in-out infinite",
-      }} />
-      <div style={{
-        position: "absolute", top: "40%", right: "25%",
-        width: 250, height: 250,
-        background: "radial-gradient(circle, #43B89C18, transparent 70%)",
-        borderRadius: "50%", pointerEvents: "none",
-        animation: "float1 22s ease-in-out infinite reverse",
-      }} />
-
-      <div style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(30px)",
-        transition: "all 0.8s cubic-bezier(0.4,0,0.2,1)",
-        maxWidth: 700,
-        position: "relative",
-        zIndex: 1,
-      }}>
-        <div style={{
-          fontSize: 72, marginBottom: 8,
-          display: "inline-block",
-          transformOrigin: "70% 70%",
-          animation: "wave 2.5s ease-in-out infinite, pulseGlow 4s ease-in-out infinite",
-        }}>
-          👋
-        </div>
-        <h1 style={{
-          margin: "0 0 8px",
-          fontSize: "clamp(42px, 8vw, 80px)",
-          fontWeight: 900,
-          background: gradient,
-          backgroundSize: "200% 200%",
-          animation: "gradientShift 6s ease infinite",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
-          letterSpacing: -2,
-          lineHeight: 1.1,
-        }}>
-          {DATA.name}
-        </h1>
-        <p style={{
-          fontSize: 20, color: "#9090b0", margin: "0 0 16px",
-          fontWeight: 600, letterSpacing: 1,
-          opacity: visible ? 1 : 0,
-          transform: visible ? "translateY(0)" : "translateY(20px)",
-          transition: "all 0.6s cubic-bezier(0.4,0,0.2,1) 0.25s",
-        }}>
-          {DATA.role}
-        </p>
-        <p style={{
-          fontSize: 16, color: "#8080b8", margin: "0 0 48px",
-          lineHeight: 1.7, maxWidth: 500, marginLeft: "auto", marginRight: "auto",
-          opacity: visible ? 1 : 0,
-          transform: visible ? "translateY(0)" : "translateY(20px)",
-          transition: "all 0.6s cubic-bezier(0.4,0,0.2,1) 0.4s",
-        }}>
-          {DATA.tagline}
-        </p>
-
-        <div style={{
-          display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap",
-          opacity: visible ? 1 : 0,
-          transform: visible ? "translateY(0)" : "translateY(20px)",
-          transition: "all 0.6s cubic-bezier(0.4,0,0.2,1) 0.55s",
-        }}>
+    <div className="home">
+      <div className="home-content">
+        <div className="eyebrow"><span className="status-dot" /> {DATA.location} <span className="eyebrow-divider">/</span> PORTFOLIO</div>
+        <h1>{DATA.name}<span className="name-dot">.</span></h1>
+        <p className="home-role">{DATA.role}</p>
+        <p className="home-tagline">{DATA.tagline}</p>
+        <div className="home-actions">
           {[
-            { label: nav.projects, page: "projects", color: "#6C63FF" },
-            { label: nav.hobbies, page: "hobbies", color: "#FF6584" },
-            { label: nav.about, page: "about", color: "#F7971E" },
-          ].map((btn) => (
-            <button
-              key={btn.page}
-              onClick={() => setPage(btn.page)}
-              style={{
-                background: btn.color,
-                color: "#fff",
-                border: "none",
-                borderRadius: 12,
-                padding: "14px 28px",
-                fontSize: 16,
-                fontWeight: 700,
-                cursor: "pointer",
-                transition: "all 0.2s",
-                boxShadow: `0 4px 20px ${btn.color}55`,
-              }}
-              onMouseEnter={e => {
-                e.target.style.transform = "translateY(-2px)";
-                e.target.style.boxShadow = `0 8px 28px ${btn.color}88`;
-              }}
-              onMouseLeave={e => {
-                e.target.style.transform = "translateY(0)";
-                e.target.style.boxShadow = `0 4px 20px ${btn.color}55`;
-              }}
-            >
-              {btn.label}
+            { label: nav.projects, page: "projects" },
+            { label: nav.hobbies, page: "hobbies" },
+            { label: nav.about, page: "about" },
+          ].map((btn, i) => (
+            <button key={btn.page} className={i === 0 ? "button button-primary" : "button"} onClick={() => setPage(btn.page)}>
+              {btn.label} <span aria-hidden="true">{i === 0 ? "↗" : "→"}</span>
             </button>
           ))}
         </div>
-
-        {/* Social + CV */}
-        <div style={{
-          marginTop: 32,
-          display: "flex", gap: 14, justifyContent: "center", alignItems: "center", flexWrap: "wrap",
-          opacity: visible ? 1 : 0,
-          transform: visible ? "translateY(0)" : "translateY(20px)",
-          transition: "all 0.6s cubic-bezier(0.4,0,0.2,1) 0.7s",
-        }}>
+        <div className="home-socials">
           {[
             { href: DATA.github, label: "GitHub", icon: githubIcon },
             { href: DATA.linkedin, label: "LinkedIn", icon: linkedinIcon },
             { href: "mailto:" + DATA.email, label: "Email", icon: mailIcon },
           ].map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              target={s.href.startsWith("mailto:") ? undefined : "_blank"}
-              rel="noreferrer"
-              aria-label={s.label}
-              style={{
-                display: "flex", alignItems: "center", justifyContent: "center",
-                width: 44, height: 44, borderRadius: 12,
-                background: "#161622", border: "1px solid #2a2a3e",
-                color: "#9090b0", transition: "all 0.2s",
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.color = "#fff";
-                e.currentTarget.style.borderColor = "#6C63FF";
-                e.currentTarget.style.transform = "translateY(-2px)";
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.color = "#9090b0";
-                e.currentTarget.style.borderColor = "#2a2a3e";
-                e.currentTarget.style.transform = "translateY(0)";
-              }}
-            >
-              {s.icon}
-            </a>
+            <a key={s.label} href={s.href} target={s.href.startsWith("mailto:") ? undefined : "_blank"} rel="noreferrer" aria-label={s.label} className="social-link">{s.icon}</a>
           ))}
-
-          <a
-            href={DATA.cv}
-            target="_blank"
-            rel="noreferrer"
-            style={{
-              display: "flex", alignItems: "center", gap: 8,
-              height: 44, padding: "0 20px", borderRadius: 12,
-              background: "#161622", border: "1px solid #2a2a3e",
-              color: "#c0c0d8", fontSize: 14, fontWeight: 700,
-              textDecoration: "none", transition: "all 0.2s",
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.color = "#fff";
-              e.currentTarget.style.borderColor = "#43B89C";
-              e.currentTarget.style.transform = "translateY(-2px)";
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.color = "#c0c0d8";
-              e.currentTarget.style.borderColor = "#2a2a3e";
-              e.currentTarget.style.transform = "translateY(0)";
-            }}
-          >
-            ⬇ {DATA.ui.downloadCv}
-          </a>
+          <span className="social-divider" />
+          <a href={DATA.cv} target="_blank" rel="noreferrer" className="cv-link"><span aria-hidden="true">↓</span> {DATA.ui.downloadCv}</a>
         </div>
-
-        <div style={{ marginTop: 28, display: "flex", gap: 24, justifyContent: "center", flexWrap: "wrap" }}>
-          {[
-            { label: "📍 " + DATA.location },
-            { label: "✉️ " + DATA.email },
-          ].map((item) => (
-            <span key={item.label} style={{ color: "#7a7ab0", fontSize: 14 }}>
-              {item.label}
-            </span>
-          ))}
-        </div>
+        <a className="home-email" href={"mailto:" + DATA.email}>{DATA.email}</a>
       </div>
     </div>
   );

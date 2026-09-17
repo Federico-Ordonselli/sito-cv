@@ -3,23 +3,25 @@ import { getContent } from "../data/content.js";
 import SectionHeader from "../components/SectionHeader.jsx";
 import SubSection from "../components/SubSection.jsx";
 
-function CertCard({ cert, color, onOpen, t }) {
+function CertCard({ cert, onOpen, t }) {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <div
+    <button
+      type="button"
+      className="cert-card"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={() => onOpen(cert)}
       style={{
-        background: hovered ? "#1e1e2e" : "#161622",
-        border: `1px solid ${hovered ? color : "#2a2a3e"}`,
+        background: hovered ? "#202723" : "#1a1f1d",
+        border: hovered ? "1px solid var(--accent)" : "1px solid var(--border)",
         borderRadius: 16,
         padding: "22px 24px",
         cursor: "pointer",
         transition: "background 0.3s, border 0.3s, box-shadow 0.3s, transform 0.3s",
         transform: hovered ? "translateY(-4px)" : "translateY(0)",
-        boxShadow: hovered ? `0 12px 40px ${color}44` : "none",
+        boxShadow: "none",
         position: "relative",
         overflow: "hidden",
         display: "flex",
@@ -29,32 +31,32 @@ function CertCard({ cert, color, onOpen, t }) {
     >
       <div style={{
         position: "absolute", top: 0, left: 0, width: 4,
-        height: "100%", background: color, borderRadius: "16px 0 0 16px",
+        height: "100%", background: "var(--border)", borderRadius: "16px 0 0 16px",
       }} />
 
       <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
         <div style={{
           width: 40, height: 40, flexShrink: 0,
           borderRadius: 10,
-          background: color + "22",
+          background: "var(--surface)",
           display: "flex", alignItems: "center", justifyContent: "center",
           fontSize: 20,
         }}>📄</div>
         <div style={{ minWidth: 0 }}>
           <div style={{
-            color: "#7a7ab0", fontSize: 11, fontWeight: 700,
+            color: "#9ca99e", fontSize: 11, fontWeight: 700,
             letterSpacing: 1, textTransform: "uppercase",
           }}>
             {cert.issuer}
           </div>
           {cert.date && (
-            <div style={{ color: "#7070a0", fontSize: 12, fontWeight: 600 }}>{cert.date}</div>
+            <div style={{ color: "#9ca99e", fontSize: 12, fontWeight: 600 }}>{cert.date}</div>
           )}
         </div>
       </div>
 
       <h3 style={{
-        margin: "0 0 16px", color: "#e0e0f0",
+        margin: "0 0 16px", color: "#eef1eb",
         fontSize: 16, fontWeight: 700, lineHeight: 1.4, flex: 1,
       }}>
         {cert.name}
@@ -62,16 +64,16 @@ function CertCard({ cert, color, onOpen, t }) {
 
       <div style={{
         display: "flex", alignItems: "center", gap: 8,
-        color: color, fontSize: 13, fontWeight: 700,
+        color: "var(--accent)", fontSize: 13, fontWeight: 700,
       }}>
         <span>{t.view}</span>
         <span style={{ transition: "transform 0.3s", transform: hovered ? "translateX(4px)" : "none" }}>→</span>
       </div>
-    </div>
+    </button>
   );
 }
 
-function PdfModal({ cert, color, onClose, t }) {
+function PdfModal({ cert, onClose, t }) {
   useEffect(() => {
     const onKey = (e) => { if (e.key === "Escape") onClose(); };
     document.addEventListener("keydown", onKey);
@@ -99,30 +101,30 @@ function PdfModal({ cert, color, onClose, t }) {
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
-          background: "#0d0d1a",
-          border: `1px solid ${color}55`,
+          background: "#121615",
+          border: "1px solid var(--border)",
           borderRadius: 16,
           width: "min(960px, 100%)",
           height: "min(90vh, 100%)",
           display: "flex", flexDirection: "column",
           overflow: "hidden",
-          boxShadow: `0 24px 80px ${color}33`,
+          boxShadow: "0 24px 80px #0006",
         }}
       >
         {/* Header */}
         <div style={{
           display: "flex", alignItems: "center", gap: 16,
-          padding: "16px 20px",
-          borderBottom: "1px solid #1e1e3e",
+          padding: "16px 20px", flexWrap: "wrap",
+          borderBottom: "1px solid #2c3530",
         }}>
           <div style={{ minWidth: 0, flex: 1 }}>
             <h3 style={{
-              margin: 0, color: "#e0e0f0", fontSize: 16, fontWeight: 700,
+              margin: 0, color: "#eef1eb", fontSize: 16, fontWeight: 700,
               whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
             }}>
               {cert.name}
             </h3>
-            <div style={{ color: "#7a7ab0", fontSize: 12, fontWeight: 600 }}>
+            <div style={{ color: "#9ca99e", fontSize: 12, fontWeight: 600 }}>
               {cert.issuer}{cert.date ? ` · ${cert.date}` : ""}
             </div>
           </div>
@@ -133,10 +135,10 @@ function PdfModal({ cert, color, onClose, t }) {
               target="_blank"
               rel="noreferrer"
               style={{
-                color: color, fontSize: 13, fontWeight: 700,
+                color: "var(--accent)", fontSize: 13, fontWeight: 700,
                 textDecoration: "none", whiteSpace: "nowrap",
                 padding: "6px 12px", borderRadius: 8,
-                border: `1px solid ${color}44`,
+                border: "1px solid var(--border)",
               }}
             >
               {t.verify} ↗
@@ -147,10 +149,10 @@ function PdfModal({ cert, color, onClose, t }) {
             target="_blank"
             rel="noreferrer"
             style={{
-              color: "#9090b0", fontSize: 13, fontWeight: 700,
+              color: "#a8b3a9", fontSize: 13, fontWeight: 700,
               textDecoration: "none", whiteSpace: "nowrap",
               padding: "6px 12px", borderRadius: 8,
-              border: "1px solid #2a2a3e",
+              border: "1px solid #303a34",
             }}
           >
             {t.open} ↗
@@ -159,8 +161,8 @@ function PdfModal({ cert, color, onClose, t }) {
             onClick={onClose}
             aria-label={t.close}
             style={{
-              background: "transparent", border: "1px solid #2a2a3e",
-              color: "#9090b0", borderRadius: 8, cursor: "pointer",
+              background: "transparent", border: "1px solid #303a34",
+              color: "#a8b3a9", borderRadius: 8, cursor: "pointer",
               width: 34, height: 34, fontSize: 18, lineHeight: 1,
               flexShrink: 0,
             }}
@@ -173,7 +175,7 @@ function PdfModal({ cert, color, onClose, t }) {
         <iframe
           title={cert.name}
           src={`${cert.file}#view=FitH`}
-          style={{ flex: 1, width: "100%", border: "none", background: "#1a1a2a" }}
+          style={{ flex: 1, width: "100%", border: "none", background: "#202723" }}
         />
       </div>
     </div>
@@ -190,10 +192,10 @@ function CertificationsPage({ lang }) {
       <SectionHeader
         title={t.title}
         subtitle={t.subtitle}
-        accent="#43B89C"
+        accent="#bdd1b8"
       />
 
-      <p style={{ color: "#9090b0", fontSize: 16, lineHeight: 1.7, marginTop: -16, marginBottom: 48, maxWidth: 700 }}>
+      <p style={{ color: "#a8b3a9", fontSize: 16, lineHeight: 1.7, marginTop: -16, marginBottom: 48, maxWidth: 700 }}>
         {t.intro}
       </p>
 
@@ -217,7 +219,7 @@ function CertificationsPage({ lang }) {
           color={
             DATA.certifications.find((g) =>
               g.items.some((c) => c.file === active.file)
-            )?.color || "#43B89C"
+            )?.color || "#bdd1b8"
           }
           onClose={() => setActive(null)}
           t={t}
