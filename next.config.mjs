@@ -1,4 +1,5 @@
 const nextConfig = {
+  agentRules: false,
   poweredByHeader: false,
   async headers() {
     return [{ source: '/(.*)', headers: [
