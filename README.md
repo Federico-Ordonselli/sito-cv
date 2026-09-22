@@ -1,5 +1,7 @@
 # Federico · Portfolio
 
+Prossime idee: [Migliorie del portfolio](docs/MIGLIORIE-PORTFOLIO.md).
+
 Portfolio in **Next.js 16 + React 19**, con App Router. La homepage presenta
 progetti selezionati, una demo interattiva con tre stili e percorsi di
 approfondimento su frontend, integrazioni e backend. Le schede originali di
