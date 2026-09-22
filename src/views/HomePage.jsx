@@ -18,6 +18,15 @@ export default function HomePage() {
     { title: 'Trekking Marti', kind: 'trekking', slug: 'trekking-marti', category: 'BOOKING / E-COMMERCE', desc: en ? 'From discovering a hike to booking your place.' : 'Dalla scoperta di un viaggio alla prenotazione.', tags: ['Next.js', 'Stripe', 'Sanity CMS'] },
     { title: 'Matchday', kind: 'matchday', slug: 'matchday', category: 'FULL STACK / DASHBOARD', desc: en ? 'Real football data. A complete platform.' : 'Dati calcistici reali. Una piattaforma completa.', tags: ['React', 'Express', 'PostgreSQL'] },
   ];
+  const processSteps = en ? [
+    { title: 'Understand the idea', detail: 'We define the goal, the people who will use it and what matters most. You get a clear scope and a first direction.' },
+    { title: 'Build a first version', detail: 'I turn that direction into working pages you can explore. You get something concrete to review and improve.' },
+    { title: 'Refine & launch', detail: 'We polish the details, check desktop and mobile, then publish. You get a live site and a clear path for future updates.' },
+  ] : [
+    { title: 'Capire l’idea', detail: 'Definiamo l’obiettivo, le persone che useranno il sito e le priorità. Ricevi un perimetro chiaro e una prima direzione.' },
+    { title: 'Costruire una prima versione', detail: 'Trasformo quella direzione in pagine funzionanti da esplorare. Hai qualcosa di concreto da rivedere e migliorare.' },
+    { title: 'Rifinire e pubblicare', detail: 'Curiamo i dettagli, controlliamo desktop e mobile, poi pubblichiamo. Hai un sito online e un percorso chiaro per aggiornarlo.' },
+  ];
   return <div className="showcase" ref={revealRef}>
     <section className="hero wrap" aria-labelledby="hero-title">
       <div className="hero-eyebrow mono"><span><i className="availability-dot" /> {en ? 'WEB DEVELOPER · ROME, ITALY' : 'WEB DEVELOPER · ROMA, ITALIA'}</span><span className="hero-edition">PORTFOLIO — 2026</span></div>
@@ -53,6 +62,16 @@ export default function HomePage() {
       <div className="about-mark" aria-hidden="true"><span>fo</span><i>✳</i><small>ROME, ITALY<br />41.9028° N · 12.4964° E</small></div>
       <div><span className="mono">03 / {en ? 'THE PERSON BEHIND THE CODE' : 'DIETRO IL CODICE'}</span><h2 id="about-title">{en ? 'Curiosity, made practical.' : 'La curiosità, messa in pratica.'}</h2><p>{en ? 'I started by building tools I needed. Today I bring the same approach to web development: understand the problem, sweat the details and build something useful.' : 'Ho iniziato costruendo gli strumenti che mi servivano. Oggi porto lo stesso approccio nello sviluppo web: capire il problema, curare i dettagli e costruire qualcosa di utile.'}</p><div className="about-links"><Link href="/about" className="text-link">{en ? 'A little about me' : 'Qualcosa in più su di me'} ↗</Link><Link href="/certifications" className="quiet-link">{en ? 'Training & certifications' : 'Formazione e certificazioni'} ↗</Link></div></div>
     </section>
+
+    <section className="process-section" aria-labelledby="process-title"><div className="wrap">
+      <div className="section-topline mono"><span>04 / {en ? 'HOW WE’D WORK TOGETHER' : 'COME LAVOREREMMO INSIEME'}</span><span>{en ? 'A CLEAR PATH FROM IDEA TO LAUNCH' : 'DALL’IDEA ALLA PUBBLICAZIONE'}</span></div>
+      <div className="process-heading" data-reveal="0"><h2 id="process-title">{en ? 'Good work starts' : 'Un buon lavoro parte'}<br /><em>{en ? 'with a conversation.' : 'da una conversazione.'}</em></h2><p>{en ? 'A simple process, with something useful to see at every step.' : 'Un percorso semplice, con qualcosa di utile da vedere a ogni passo.'}</p></div>
+      <ol className="process-steps">{processSteps.map((step, index) => <li key={step.title} data-reveal={index * 80}>
+        <div className="process-step-top"><span className="mono">0{index + 1} / 03</span><span aria-hidden="true">{index === 0 ? '✳' : index === 1 ? '↗' : '✓'}</span></div>
+        <h3>{step.title}</h3><p>{step.detail}</p>
+      </li>)}</ol>
+      <a className="text-link process-link" href="#contact">{en ? 'Tell me what you’re building' : 'Raccontami cosa vuoi creare'} <span aria-hidden="true">↗</span></a>
+    </div></section>
 
     <section className="contact-section wrap" id="contact" aria-labelledby="contact-title"><div className="contact-card" data-reveal="0"><div><span className="mono">{en ? 'GOT SOMETHING IN MIND?' : 'HAI QUALCOSA IN MENTE?'}</span><h2 id="contact-title">{en ? 'Let’s make' : 'Facciamolo'}<br /><em>{en ? 'it happen.' : 'succedere.'}</em></h2><p>{en ? 'Tell me what you want to build. We’ll work out where to start.' : 'Raccontami cosa vuoi costruire. Capiamo insieme da dove partire.'}</p><a href={`mailto:${data.email}?subject=${encodeURIComponent(en ? 'Let’s talk about my project' : 'Parliamo del mio progetto')}`} className="cta cta-dark">{en ? 'Let’s talk about your project' : 'Parliamo del tuo progetto'} <span aria-hidden="true">↗</span></a><a className="contact-email" href={`mailto:${data.email}`}>{data.email}</a></div><div className="contact-flower" aria-hidden="true">✳</div><span className="contact-side mono">GOOD IDEAS DESERVE GOOD WEBSITES.</span></div></section>
   </div>;

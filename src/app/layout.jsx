@@ -2,6 +2,7 @@ import { cookies } from 'next/headers';
 import SiteShell from '../components/SiteShell';
 import '../index.css';
 import '../showcase.css';
+import '../process.css';
 import '../inner-pages.css';
 import '../toolkit.css';
 import '../interface-lab.css';
