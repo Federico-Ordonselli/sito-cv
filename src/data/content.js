@@ -253,17 +253,17 @@ const RAW = {
       {
         label: tr("Backend e dati", "Backend & data"),
         color: "#43B89C",
-        items: ["Node.js", "Express", "FastAPI", "PostgreSQL", "Drizzle ORM", "SQLite", "REST API", "Zod"],
+        items: ["Node.js", "Express", "FastAPI", "PostgreSQL", "MySQL", "Drizzle ORM", "SQLite", "REST API", "Zod"],
       },
       {
         label: tr("Servizi e infrastruttura", "Services & infrastructure"),
         color: "#F7971E",
-        items: ["Stripe", "Sanity", "Auth.js", "Clerk", "Resend", "Vercel", "Neon", "Azure", "Terraform"],
+        items: ["WordPress", "Stripe", "Sanity", "Auth.js", "Clerk", "Resend", "Vercel", "NeonDB", "Azure", "Terraform"],
       },
       {
         label: tr("Sistemi e workflow", "Systems & workflow"),
         color: "#FF6584",
-        items: ["Arch Linux", "Bash/CLI", "Docker", "Docker Compose", "Git", "Gitflow", "GitLab CI", "GitHub Actions", "npm", "pnpm", tr("Modelli AI locali", "Local AI models")],
+        items: ["Arch Linux", "Bash/CLI", "Docker", "Docker Compose", "Git", "Gitflow", "GitLab CI", "GitHub Actions · CI/CD", "npm", "pnpm", tr("Modelli AI locali", "Local AI models")],
       },
       {
         label: tr("Qualità e sicurezza", "Quality & security"),
@@ -418,9 +418,9 @@ const RAW = {
   },
 };
 
-export function getContent(lang) {
+export function getContent(lang = "en") {
   return resolve(RAW, lang);
 }
 
 // Lingue disponibili (per il toggle in Navbar)
-export const LANGS = ["it", "en"];
+export const LANGS = ["en", "it"];

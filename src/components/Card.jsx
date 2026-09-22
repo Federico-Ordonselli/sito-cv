@@ -5,7 +5,7 @@ function Card({ title, desc, tags, link, icon }) {
   const Root = interactive ? "a" : "div";
   const linkProps = interactive ? { href: link, target: "_blank", rel: "noopener noreferrer" } : {};
   return (
-    <Root className={interactive ? "card card--link" : "card"} {...linkProps}>
+    <Root id={title.toLowerCase().replace(/[^a-z0-9]+/g, '-')} className={interactive ? "card card--link" : "card"} {...linkProps}>
       {icon && <div className="card-icon">{icon}</div>}
       <div className="card-heading">
         <h3>{title}</h3>

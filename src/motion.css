@@ -1,0 +1,83 @@
+/* Short, occasional movements. No scroll handlers or animation dependencies. */
+.brand-asterisk,
+.cta > span,
+.nav-contact > span,
+.style-dot {
+  display: inline-block;
+  transition: transform 350ms cubic-bezier(.22, 1, .36, 1);
+}
+
+.cta:active,
+.demo-button:active,
+.device-toggle:active { transform: scale(.97); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-copy > * {
+    animation: soft-arrival 700ms cubic-bezier(.22, 1, .36, 1) backwards;
+  }
+  .hero-copy > :nth-child(2) { animation-delay: 90ms; }
+  .hero-copy > :nth-child(3) { animation-delay: 160ms; }
+  .hero-copy > :nth-child(4) { animation-delay: 230ms; }
+  .interface-lab { animation: lab-arrival 900ms 150ms cubic-bezier(.22, 1, .36, 1) backwards; }
+  .heading-star { animation: star-unfold 1400ms 250ms cubic-bezier(.22, 1, .36, 1) backwards; }
+  .lab-sticker { animation: sticker-bob 2s 900ms ease-in-out 2; }
+  .contact-card.is-revealed .contact-flower { animation: flower-unfold 1200ms cubic-bezier(.22, 1, .36, 1); }
+  .demo-button[aria-pressed="true"] > span { animation: check-pop 400ms cubic-bezier(.2, 1.5, .5, 1); }
+  .site-navigation.is-open { animation: soft-arrival 250ms cubic-bezier(.22, 1, .36, 1); }
+
+  @media (hover: hover) and (pointer: fine) {
+    .wordmark:hover .brand-asterisk { transform: rotate(90deg); }
+    .cta:hover > span,
+    .nav-contact:hover > span { transform: translate(3px, -3px); }
+    .style-choices button:hover .style-dot { transform: scale(1.35); }
+    .featured-project:hover .match-bars i {
+      transform-origin: bottom;
+      animation: chart-grow 550ms cubic-bezier(.22, 1, .36, 1) backwards;
+    }
+    .featured-project:hover .match-bars i:nth-child(2n) { animation-delay: 70ms; }
+    .featured-project:hover .match-bars i:nth-child(3n) { animation-delay: 130ms; }
+    .featured-project:hover .rune-map path[stroke-dasharray] { animation: map-route 1s ease-out; }
+    .mountains span { transition: translate 700ms cubic-bezier(.22, 1, .36, 1); }
+    .featured-project:hover .mountains span:nth-child(1) { translate: -7px -4px; }
+    .featured-project:hover .mountains span:nth-child(2) { translate: 5px -3px; }
+    .featured-project:hover .mountains span:nth-child(3) { translate: -3px -8px; }
+  }
+}
+
+@keyframes soft-arrival {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes lab-arrival {
+  from { opacity: 0; translate: 0 22px; }
+  to { opacity: 1; translate: 0 0; }
+}
+@keyframes star-unfold {
+  from { opacity: 0; transform: rotate(-75deg) scale(.7); }
+  to { opacity: 1; transform: rotate(0) scale(1); }
+}
+@keyframes sticker-bob {
+  0%, 100% { transform: translateY(0) rotate(10deg); }
+  50% { transform: translateY(-5px) rotate(5deg); }
+}
+@keyframes flower-unfold {
+  from { transform: rotate(-25deg) scale(.9); }
+  to { transform: rotate(10deg) scale(1); }
+}
+@keyframes check-pop {
+  from { transform: scale(.4) rotate(-15deg); }
+  to { transform: scale(1) rotate(0); }
+}
+@keyframes chart-grow {
+  from { transform: scaleY(.65); }
+  to { transform: scaleY(1); }
+}
+@keyframes map-route {
+  from { stroke-dashoffset: 33; }
+  to { stroke-dashoffset: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase *, .site-header * { animation: none !important; transition: none !important; }
+  .cta:active, .demo-button:active, .device-toggle:active { transform: none; }
+}

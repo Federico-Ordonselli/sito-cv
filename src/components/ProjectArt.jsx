@@ -1,0 +1,10 @@
+export default function ProjectArt({ kind }) {
+  if (kind === 'runebog') return <div className="project-art art-runebog" aria-hidden="true">
+    <div className="rune-top"><span>ᚱ RUNЕBOG</span><span>CAMPAIGN WORKSPACE</span></div>
+    <div className="rune-map"><svg viewBox="0 0 400 200" fill="none"><path d="M-20 165 Q70 30 160 110 T420 50M-20 190 Q85 60 170 140 T420 80M-20 130 Q80 0 160 80 T420 20" stroke="#b7c6a1" opacity=".28" strokeWidth="2"/><path d="M65 135 L155 70 L250 110 L335 40" stroke="#cee4a5" strokeWidth="2" strokeDasharray="4 7"/>{[[65,135],[155,70],[250,110],[335,40]].map(([x,y],i) => <g key={x}><circle cx={x} cy={y} r="14" fill="#263f36" stroke="#cce1a9"/><text x={x} y={y+4} fill="#e3eccd" textAnchor="middle" fontSize="11">{i+1}</text></g>)}</svg><span className="map-label">The quiet forest</span><div className="map-tool">＋<br />−</div></div>
+    <div className="rune-bottom"><span><i /> Campaign saved</span><span>CHAPTER 01 ↗</span></div>
+  </div>;
+  if (kind === 'trekking') return <div className="project-art art-trekking" aria-hidden="true"><div className="trek-nav"><strong>trekking marti.</strong><span>EXPLORE ↗</span></div><div className="mountains"><span /><span /><span /></div><div className="trek-title">Fuori dai soliti<br /><em>sentieri.</em></div><div className="trek-pill">↗ Find your next adventure</div><span className="trek-coordinates">42° 27′ N · 13° 33′ E</span></div>;
+  return <div className="project-art art-matchday" aria-hidden="true"><div className="match-nav"><b>matchday<span>●</span></b><span>OVERVIEW</span></div><div className="match-grid"><div className="match-stat"><span>YOUR SEASON</span><strong>Game on<span>↗</span></strong><div className="match-bars">{[35,60,42,75,55,85,68,95,78,100].map((h,i) => <i key={i} style={{height: `${h}%`}} />)}</div></div><div className="match-score"><small>MATCH CENTER</small><span>R <b>2 : 1</b> M</span><div>90′ · FULL TIME</div></div></div><div className="match-bottom"><span>React / Express / PostgreSQL</span><span>↗</span></div></div>;
+}
+
