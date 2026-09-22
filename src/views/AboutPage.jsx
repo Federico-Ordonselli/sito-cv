@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Link from 'next/link';
 import { getContent } from '../data/content.js';
 import SectionHeader from '../components/SectionHeader.jsx';
 import Tag from '../components/Tag.jsx';
@@ -20,8 +21,8 @@ export default function AboutPage({ lang }) {
     </section>
 
     <section className="inner-section">
-      <div className="inner-section-heading"><span className="mono">02</span><h2>{t.certsHeading}</h2><span className="inner-section-rule" /></div>
-      <div className="about-credentials">{data.about.certs.map(c => <span key={c.name}>{c.name} <span aria-hidden="true">↗</span></span>)}</div>
+      <div className="inner-section-heading"><span className="mono">02</span><h2><Link className="about-credentials-heading" href="/certifications">{t.certsHeading} <span aria-hidden="true">↗</span></Link></h2><span className="inner-section-rule" /></div>
+      <div className="about-credentials">{data.about.certs.map(c => <Link href="/certifications" key={c.name}>{c.name} <span aria-hidden="true">↗</span></Link>)}</div>
     </section>
 
     <section className="inner-section">

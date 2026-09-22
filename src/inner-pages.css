@@ -34,8 +34,12 @@
 .skill-row h3 { margin: 0; font-size: 20px; font-weight: 500; letter-spacing: -.03em; }
 .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .about-credentials { display: flex; flex-wrap: wrap; gap: 10px; }
-.about-credentials > span { display: inline-flex; align-items: center; gap: 18px; padding: 13px 16px; border: 1px solid #d9ddd0; border-radius: 4px; background: #fdfdf9; font-size: 13px; }
-.about-credentials > span span { color: var(--blue); }
+.about-credentials-heading { text-decoration: none; }
+.about-credentials-heading span { color: var(--blue); font-size: .7em; }
+.about-credentials-heading:hover { color: var(--blue); }
+.about-credentials > a { display: inline-flex; align-items: center; gap: 18px; padding: 13px 16px; border: 1px solid #d9ddd0; border-radius: 4px; background: #fdfdf9; color: var(--ink); text-decoration: none; font-size: 13px; transition: border-color .2s, transform .2s; }
+.about-credentials > a:hover { border-color: var(--blue); transform: translateY(-2px); }
+.about-credentials > a span { color: var(--blue); }
 .fact-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; }
 .fact-card { min-height: 155px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 21px; border: 1px solid #d9ddd0; border-radius: 5px; background: #eceee4; }
 .fact-icon { font-size: 25px; margin-bottom: 4px; }
