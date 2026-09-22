@@ -11,7 +11,6 @@ export default function SiteShell({ initialLang, children }) {
   const pathname = usePathname();
   const router = useRouter();
   const data = getContent(lang);
-  const light = pathname === '/' || pathname.startsWith('/competenze');
   useEffect(() => {
     const redirectHash = () => {
       const page = window.location.hash.replace(/^#\/?/, '');
@@ -28,7 +27,7 @@ export default function SiteShell({ initialLang, children }) {
     router.refresh();
   }
   return <LanguageContext.Provider value={{ lang, setLang }}>
-    <div className={`site-shell ${light ? 'light-shell' : 'dark-shell'}`}>
+    <div className="site-shell light-shell">
       <a className="skip-link" href="#main-content">{lang === 'it' ? 'Vai al contenuto' : 'Skip to content'}</a>
       <Navbar key={pathname} pathname={pathname} lang={lang} setLang={setLang} />
       <main id="main-content" tabIndex={-1}>{children}</main>

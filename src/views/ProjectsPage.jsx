@@ -7,28 +7,28 @@ function ProjectsPage({ lang }) {
   const DATA = getContent(lang);
   const t = DATA.ui.projectsPage;
   return (
-    <div style={{ padding: "60px 24px", maxWidth: 1100, margin: "0 auto" }}>
+    <div className="inner-page wrap">
       <SectionHeader
         title={t.title}
         subtitle={t.subtitle}
-        accent="#bdd1b8"
+        number="01"
       />
 
       {/* Ordine: il web development apre la pagina, la data analysis chiude.
           Riflette il posizionamento del CV, non la cronologia dei progetti. */}
-      <SubSection title={t.web} color="#bdd1b8">
+      <SubSection title={t.web} index="01">
         {DATA.projects.web.map((p, i) => (
           <Card key={p.title} {...p} delay={i * 80} />
         ))}
       </SubSection>
 
-      <SubSection title={t.cyber} color="#bdd1b8">
+      <SubSection title={t.cyber} index="02">
         {DATA.projects.cyber.map((p, i) => (
           <Card key={p.title} {...p} delay={i * 80} />
         ))}
       </SubSection>
 
-      <SubSection title={t.data} color="#bdd1b8">
+      <SubSection title={t.data} index="03">
         {DATA.projects.data.map((p, i) => (
           <Card key={p.title} {...p} delay={i * 80} />
         ))}
