@@ -15,7 +15,7 @@ export default function ExpertisePage({ slug }) {
     <h1>{item.title[lang]}</h1><p className="detail-intro">{item.intro[lang]}</p>
     <div className="detail-points">{item.points[lang].map(([title, text], i) => <section key={title}><span className="mono">0{i + 1}</span><h2>{title}</h2><p>{text}</p></section>)}</div>
     <h2 className="detail-projects-title">{en ? 'Where I put it into practice' : 'Dove l’ho messo in pratica'}</h2>
-    <div className="detail-projects">{data.projects.web.filter(project => item.projects.includes(project.title)).map(project => <div key={project.title}><h3>{project.title}</h3><p>{project.desc}</p><Link className="text-link" href={`/projects#${project.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{en ? 'View project card' : 'Vai alla scheda'} ↗</Link></div>)}</div>
+    <div className="detail-projects">{data.projects.web.filter(project => item.projects.includes(project.title)).map(project => <div key={project.title}><h3>{project.title}</h3><p>{project.desc}</p><Link className="text-link" href={project.caseStudy ?? `/projects#${project.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{project.caseStudy ? (en ? 'Read the case study' : 'Leggi l’approfondimento') : (en ? 'View project card' : 'Vai alla scheda')} ↗</Link></div>)}</div>
     <div className="detail-contact"><h2>{en ? 'Something similar in mind?' : 'Hai in mente qualcosa di simile?'}</h2><a className="cta cta-dark" href={`mailto:${data.email}`}>{en ? 'Tell me about it' : 'Raccontamelo'} ↗</a></div>
   </article>;
 }

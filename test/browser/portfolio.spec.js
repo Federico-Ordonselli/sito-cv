@@ -110,6 +110,31 @@ test('project anchors, technology routes, old hash URLs and missing pages work',
   await expect(page.getByRole('link', { name: /Back to the homepage/ })).toBeVisible();
 });
 
+test('Matchday case study is linked from the homepage and project card', async ({ page }, testInfo) => {
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.goto('/');
+  await page.locator('.featured-project').nth(2).click();
+  await expect(page).toHaveURL(/\/projects\/matchday$/);
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Matchday');
+  await expect(page.getByRole('link', { name: /Source code on GitLab/ })).toHaveAttribute('href', 'https://gitlab.com/Federico-Ordonselli/matchday');
+  await expect(page.getByRole('link', { name: /Open the demo/ })).toHaveAttribute('href', 'https://matchday-web-plum.vercel.app/');
+  const shots = page.locator('.case-shots img');
+  await expect(shots).toHaveCount(3);
+  await shots.last().scrollIntoViewIfNeeded();
+  await shots.evaluateAll(images => Promise.all(images.map(img => img.decode())));
+  expect(await shots.evaluateAll(images => images.every(img => img.naturalWidth > 0))).toBe(true);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+  await page.screenshot({ path: testInfo.outputPath('matchday.png'), fullPage: true, animations: 'disabled' });
+  await page.goto('/projects');
+  await page.locator('#matchday').click();
+  await expect(page).toHaveURL(/\/projects\/matchday$/);
+  const missing = await page.goto('/projects/missing');
+  expect(missing.status()).toBe(404);
+  expect(errors).toEqual([]);
+});
+
 test('mobile menu supports dismissal and narrow screens do not overflow', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'mobile');
   await page.goto('/');

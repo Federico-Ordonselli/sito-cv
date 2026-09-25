@@ -38,7 +38,9 @@ Modifica lì nome, ruolo, tagline, contatti, l'elenco dei progetti
 `about` (bio, facts, certificazioni, link Spotify). I componenti leggono tutto da
 qui, quindi non serve toccare il codice delle pagine per aggiornare le schede.
 I testi della nuova homepage sono in `src/views/HomePage.jsx`; gli approfondimenti
-sono in `src/data/expertise.js`. Le anteprime dei tre progetti sono illustrazioni
+sono in `src/data/expertise.js`. Le pagine di approfondimento dei progetti
+(`/projects/[slug]`) leggono `src/data/caseStudies.js`; le schermate stanno in
+`public/projects/<slug>/`. Le anteprime dei tre progetti sono illustrazioni
 HTML/SVG, non screenshot dei prodotti. Non viene pubblicata una tariffa oraria.
 
 La demo ha tre composizioni: **Minimal** (studio monocromatico), **Explore**
@@ -63,6 +65,7 @@ src/
   views/                 # homepage e viste originali
   data/content.js        # contenuti originali IT/EN
   data/expertise.js      # percorsi per tecnologia, con progetti collegati
+  data/caseStudies.js    # approfondimenti dei progetti IT/EN
   index.css              # stili delle schede originali
   showcase.css           # homepage, navigazione e approfondimenti
   proxy.js               # Content Security Policy con nonce per richiesta
@@ -70,7 +73,7 @@ src/
 
 ## Navigazione e lingua
 
-Route: `/`, `/projects`, `/about`, `/certifications`, `/hobbies`,
+Route: `/`, `/projects`, `/projects/matchday`, `/about`, `/certifications`, `/hobbies`,
 `/competenze/frontend`, `/competenze/integrazioni`, `/competenze/backend`.
 I vecchi URL `/#/projects` e analoghi vengono convertiti nella route corrispondente.
 L’inglese è la lingua predefinita; l’italiano è disponibile dal selettore EN / IT.

@@ -16,7 +16,7 @@ export default function HomePage() {
   const selected = [
     { title: 'Runebog GM', kind: 'runebog', slug: 'runebog-gm', category: 'WEB APP / NEXT.JS', desc: en ? 'An entire world, organised in a web app.' : 'Un intero mondo, organizzato in una web app.', tags: ['Map editor', 'Cloud save', 'Auth.js'] },
     { title: 'Trekking Marti', kind: 'trekking', slug: 'trekking-marti', category: 'BOOKING / E-COMMERCE', desc: en ? 'From discovering a hike to booking your place.' : 'Dalla scoperta di un viaggio alla prenotazione.', tags: ['Next.js', 'Stripe', 'Sanity CMS'] },
-    { title: 'Matchday', kind: 'matchday', slug: 'matchday', category: 'FULL STACK / DASHBOARD', desc: en ? 'Real football data. A complete platform.' : 'Dati calcistici reali. Una piattaforma completa.', tags: ['React', 'Express', 'PostgreSQL'] },
+    { title: 'Matchday', kind: 'matchday', slug: 'matchday', href: '/projects/matchday', category: 'FULL STACK / MONOREPO', desc: en ? 'Real football data. A complete platform.' : 'Dati calcistici reali. Una piattaforma completa.', tags: ['React', 'Express', 'PostgreSQL'] },
   ];
   const processSteps = en ? [
     { title: 'Understand the idea', detail: 'We define the goal, the people who will use it and what matters most. You get a clear scope and a first direction.' },
@@ -45,7 +45,7 @@ export default function HomePage() {
     <section className="work-section wrap" id="selected-work" aria-labelledby="work-title">
       <div className="section-topline mono"><span>01 / {en ? 'SELECTED WORK' : 'PROGETTI SELEZIONATI'}</span><span>{en ? 'FROM IDEA TO INTERFACE' : 'DALL’IDEA ALL’INTERFACCIA'}</span></div>
       <div className="section-heading" data-reveal="0"><h2 id="work-title">{en ? 'Less talk.' : 'Meno promesse.'}<br /><em>{en ? 'More working things.' : 'Più cose che funzionano.'}</em></h2><Link href="/projects" className="text-link">{en ? 'All projects' : 'Tutti i progetti'} <span aria-hidden="true">↗</span></Link></div>
-      <div className="featured-grid">{selected.map((project, index) => <Link href={`/projects#${project.slug}`} className="featured-project" key={project.kind} data-reveal={index * 80}>
+      <div className="featured-grid">{selected.map((project, index) => <Link href={project.href ?? `/projects#${project.slug}`} className="featured-project" key={project.kind} data-reveal={index * 80}>
         <ProjectArt kind={project.kind} />
         <div className="project-info"><span className="mono project-category">{project.category}</span><h3>{project.title}<span aria-hidden="true">↗</span></h3><p>{project.desc}</p><div className="project-stack">{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div></div>
       </Link>)}</div>

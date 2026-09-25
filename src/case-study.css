@@ -1,0 +1,50 @@
+/* Pagine di approfondimento dei progetti (/projects/[slug]). Riusa .detail-* di showcase.css. */
+.case-study { padding-block: 50px 80px; }
+.case-hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: end; margin-bottom: 56px; }
+.case-hero .detail-eyebrow { margin-top: 48px; }
+.case-hero h1 { margin: 24px 0; font-size: clamp(48px, 7vw, 92px); font-weight: 500; line-height: 1; letter-spacing: -3px; }
+.case-hero h1 em { display: block; margin-top: 14px; font: 400 clamp(26px, 3.2vw, 40px)/1.15 Georgia, 'Times New Roman', serif; letter-spacing: -1px; }
+.case-links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 30px; }
+.case-hero .project-art { height: 300px; }
+.case-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin: 0 0 72px; border-block: 1px solid var(--border); }
+.case-facts > div { padding: 22px 22px 22px 0; }
+.case-facts > div + div { padding-left: 22px; border-left: 1px solid var(--border); }
+.case-facts dt { color: #6b765a; text-transform: uppercase; margin-bottom: 8px; }
+.case-facts dd { margin: 0; font-size: 14px; line-height: 1.6; }
+.case-story { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 80px; }
+.case-story section { border-top: 1px solid var(--border); padding-top: 23px; }
+.case-story .mono { color: #7d866d; }
+.case-story h2, .case-section > h2, .case-limits h2 { font-size: clamp(25px, 3vw, 34px); font-weight: 500; letter-spacing: -.04em; margin: 8px 0 16px; }
+.case-story p { font-size: 16px; line-height: 1.8; color: #5f6457; margin: 0; }
+.case-section { margin-bottom: 80px; }
+.case-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.case-grid > div { padding: 25px; background: #ebece3; border-radius: 5px; }
+.case-grid h3, .case-section .detail-points h3 { margin: 0 0 10px; font-size: 20px; font-weight: 500; letter-spacing: -.5px; }
+.case-grid p { margin: 0; font-size: 14px; line-height: 1.75; color: #5f6457; }
+.case-section .detail-points { margin: 0; }
+.case-section .detail-points h3 { margin-top: 10px; }
+.case-shots { display: grid; grid-template-columns: 1fr minmax(0, .42fr) 1fr; gap: 20px; align-items: start; }
+.case-shots figure { margin: 0; }
+.case-shots img { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: 6px; background: #0d1117; }
+.case-shots figcaption { margin-top: 10px; color: #6b765a; text-transform: uppercase; }
+.case-note { margin: 18px 0 0; font-size: 13px; line-height: 1.7; color: #666b60; }
+.case-limits { max-width: 760px; padding: 28px 30px; border-left: 3px solid var(--blue); background: #ebece3; border-radius: 0 5px 5px 0; }
+.case-limits h2 { margin-top: 0; font-size: 22px; }
+.case-limits p { margin: 0; font-size: 15px; line-height: 1.8; color: #5f6457; }
+@media (max-width: 1000px) { .case-grid { grid-template-columns: 1fr 1fr; }.case-facts { grid-template-columns: 1fr 1fr; }.case-facts > div:nth-child(3) { padding-left: 0; border-left: 0; }.case-facts > div:nth-child(n+3) { border-top: 1px solid var(--border); } }
+@media (max-width: 720px) {
+  .case-study { padding-top: 28px; }
+  .case-hero { grid-template-columns: 1fr; gap: 32px; margin-bottom: 40px; }
+  .case-hero .detail-eyebrow { margin-top: 32px; }
+  .case-hero h1 { letter-spacing: -2px; }
+  .case-hero .project-art { height: 255px; }
+  .case-facts { grid-template-columns: 1fr; margin-bottom: 48px; }
+  .case-facts > div, .case-facts > div + div { padding: 18px 0; border-left: 0; }
+  .case-facts > div + div { border-top: 1px solid var(--border); }
+  .case-story, .case-grid { grid-template-columns: 1fr; gap: 24px; }
+  .case-story { margin-bottom: 56px; }
+  .case-section { margin-bottom: 56px; }
+  .case-shots { grid-template-columns: 1fr; }
+  .case-shots .is-tall { max-width: 300px; }
+  .case-limits { padding: 22px; }
+}

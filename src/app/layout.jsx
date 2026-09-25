@@ -4,6 +4,7 @@ import '../index.css';
 import '../showcase.css';
 import '../process.css';
 import '../inner-pages.css';
+import '../case-study.css';
 import '../toolkit.css';
 import '../interface-lab.css';
 import '../motion.css';
